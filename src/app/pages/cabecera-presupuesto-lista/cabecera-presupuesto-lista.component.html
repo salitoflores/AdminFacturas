@@ -1,0 +1,142 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Presuesto</h4>
+				<p class="category">Informacion detallada de los presupuestos
+					asignados</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<form
+						(submit)="formDetallePresupuestoLista.form.valid && buscarCabeceraPresupuesto()"
+						#formDetallePresupuestoLista="ngForm" novalidate>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idTipoGasto">Tipo Gasto: *</label> <select
+											class="form-control"
+											[(ngModel)]="tipoGasto.cpIdCatalogo"
+											name="idTipoGasto" #idTipoGasto="ngModel" (change)=cargarCuentas() required>
+											<option value="">Seleccione...</option>
+											<option
+												*ngFor="let catalogo of lstCodigoCatalogoTipoGasto"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}} </option>
+										</select>
+										<bi-errors [control]="idTipoGasto"
+											ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idCuentaContable">Cuenta Contable: *</label> <select
+											class="form-control"
+											[(ngModel)]="cuentaContable.cpIdCatalogo"
+											name="idCuentaContable" #idCuentaContable="ngModel" required>
+											<option value="">Seleccione...</option>
+											<option
+												*ngFor="let catalogo of lstCodigoCatalogoCuentaContable"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}
+												- {{catalogo.cpCampo3}}</option>
+										</select>
+										<bi-errors [control]="idCuentaContable"
+											ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idArea">Area:</label> <select
+											class="form-control" [(ngModel)]="area.cpIdCatalogo"
+											name="idArea" #idArea="ngModel" >
+											<option value="">Seleccione...</option>
+											<option *ngFor="let catalogo of lstCodigoCatalogoArea"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+										</select>
+										<bi-errors [control]="idArea" ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idResponsable">Responsable:</label> <select
+											class="form-control" [(ngModel)]="responsable.cpIdCatalogo"
+											name="idResponsable" #idResponsable="ngModel" >
+											<option value="">Seleccione...</option>
+											<option *ngFor="let catalogo of lstCodigoCatalogoResponsable"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+										</select>
+										<bi-errors [control]="idResponsable" ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+					</form>
+				</div>
+			</div>
+			<div class="content" >
+				<div class="row">
+					<table class="table table-bordered" >
+						<thead>
+							<tr>
+								<th scope="col" style="text-align:center;">Registrar Facturas</th>
+								<th scope="col" style="text-align:center;">Registrar Ahorro</th>
+								<th scope="col" style="text-align:center;">Editar</th>
+								<th scope="col" style="text-align:center;">Ver Facturas</th>
+								<th scope="col" style="text-align:center;">Proposito</th>
+								<th scope="col" style="text-align:center;">Detalle</th>
+								<th scope="col" style="text-align:center;">Presupuesto</th>
+								<th scope="col" style="text-align:center;">Valor Pagado</th>
+								<th scope="col" style="text-align:center;">Diferencia</th>
+								<th scope="col" style="text-align:center;">Centro Costos</th>
+								<th scope="col" style="text-align:center;">Servicio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let cabeceraPresupuesto of lstCabeceraPresupuesto">
+								<td  style="text-align:center;"><a
+									(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
+										src="./assets/img/boton-de-agregar.png" width="20"
+										height="20" alt=""></a></td>
+										<td  style="text-align:center;"><a
+									(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
+										src="./assets/img/boton-de-agregar.png" width="20"
+										height="20" alt=""></a></td>
+								<td  style="text-align:center;"><a
+									(click)="modificarCabecera(cabeceraPresupuesto.cpIdCabecera)"><img
+										src="./assets/img/editar.png" width="20" height="20"
+										alt=""></a></td>
+										<td  style="text-align:center;"><a
+									(click)="consultarDetalles(cabeceraPresupuesto.cpIdCabecera)"><img
+										src="./assets/img/buscar.png" width="20" height="20"
+										alt=""></a></td>
+								<td>{{cabeceraPresupuesto.cpProposito}}</td>
+								<td>{{cabeceraPresupuesto.cpDetalles}}</td>
+								<td style="text-align:right;">{{cabeceraPresupuesto.cpPresupuestoAnioActual |
+									currency}}</td>
+								<td  style="text-align:right;">{{cabeceraPresupuesto.valorCancelado |
+									currency}}</td>
+								<td  style="text-align:right;">{{cabeceraPresupuesto.diferencia |
+									currency}}</td>
+									<td>{{cabeceraPresupuesto.cpIdCentroCosto.cpCodigoCatalogo}}</td>
+								<td>{{cabeceraPresupuesto.cpIdServicio.cpCodigoCatalogo}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

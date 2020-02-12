@@ -1,0 +1,9 @@
+{
+  "/srvPresupuestoTi-web/*": {
+    "target": "http://10.129.0.42:9080",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+ 
+}

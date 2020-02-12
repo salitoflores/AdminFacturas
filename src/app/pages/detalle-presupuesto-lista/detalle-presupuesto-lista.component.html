@@ -1,0 +1,64 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Facturas</h4>
+				<p class="category">Informacion detallada de Facturas</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<form
+						(submit)="formCabeceraPresupuesto.form.valid && buscarDetallePresupuestoFiltroCabeceraMes()"
+						#formCabeceraPresupuesto="ngForm" novalidate>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idMes">Mes: *</label> <select class="form-control"
+											[(ngModel)]="mes.cpIdCatalogo" name="idMes" #idMes="ngModel"
+											required>
+											<option *ngFor="let catalogo of lstCodigoCatalogoMes"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+										</select>
+										<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+							<a (click)="regresar()" class="btn btn-fill btn-warning">Regresar</a>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="content">
+				<div class="row">
+				
+					<table class="table table-striped" *ngIf="lstDetallePresupuestoFiltrado.length > 0">
+						<thead>
+							<tr>
+								<th scope="col">Editar</th>
+								<th scope="col">Proveedor</th>
+								<th scope="col">Nro. Factura</th>
+								<th scope="col">Valor sin impuestos</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								*ngFor="let detallePresupuesto of lstDetallePresupuestoFiltrado">
+								<td><a
+									(click)="modificarDetalle(detallePresupuesto.dpIdDetalle)"><img
+										src="./assets/img/editar.png" width="20" height="20"
+										alt=""></a></td>
+								<td>{{detallePresupuesto.cpIdProveedor.cpCodigoCatalogo}}</td>
+								<td>{{detallePresupuesto.dpNumeroFactura}}</td>
+								<td>{{detallePresupuesto.dpSubtotal | currency}}</td>
+								<td>{{detallePresupuesto.dpValorPresupuesto | currency}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

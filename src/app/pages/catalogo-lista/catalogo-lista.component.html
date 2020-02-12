@@ -1,0 +1,64 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Presuesto</h4>
+				<p class="category">Informacion detallada de los presupuestos
+					asignados</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<form
+						(submit)="formCatalogoLista.form.valid && buscarCatalogosHijos()"
+						#formCatalogoLista="ngForm" novalidate>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idCuentaContable">Tipo Cat&aacute;logo: *</label> <select
+											class="form-control"
+											[(ngModel)]="flagPadre"
+											name="idCuentaContable" #idCuentaContable="ngModel" required>
+											<option
+												*ngFor="let catalogo of lstCatalogoPadre"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+										</select>
+										<bi-errors [control]="idCuentaContable"
+											ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+						</div>						
+						
+					</form>
+				</div>
+			</div>
+			<div class="content" >
+				<div class="row">
+					<table class="table table-striped" *ngIf="lstCatalogosHijos.length > 0">
+						<thead>
+							<tr>
+								<th scope="col">Editar</th>
+								<th scope="col">Sub-cat&aacute;logo</th>
+								<th scope="col">Cuenta</th>
+								<th scope="col">Estado</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let catalogo of lstCatalogosHijos">
+								<td><a
+									(click)="modificarCatalogo(catalogo.cpIdCatalogo)"><img
+										src="./assets/img/editar.png" width="20" height="20"
+										alt=""></a></td>										
+								<td>{{catalogo.cpCodigoCatalogo}} </td>
+								<td>{{catalogo.cpCampo3}} </td>
+								<td>{{catalogo.cpestado}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

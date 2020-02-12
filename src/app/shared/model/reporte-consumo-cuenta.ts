@@ -1,0 +1,41 @@
+export interface ReporteConsumoCuenta {
+
+    cuentaContable?: string;
+    presupuestoAsignado?: number;
+    proyeccionEnero?: number;
+    gastadoEnero?: number;
+    diferenciaEnero?: number;
+    proyeccionFebrero?: number;
+    gastadoFebrero?: number;
+    diferenciaFebrero?: number;
+    proyeccionMarzo?: number;
+    gastadoMarzo?: number;
+    diferenciaMarzo?: number;
+    proyeccionAbril?: number;
+    gastadoAbril?: number;
+    diferenciaAbril?: number;
+    proyeccionMayo?: number;
+    gastadoMayo?: number;
+    diferenciaMayo?: number;
+    proyeccionJunio?: number;
+    gastadoJunio?: number;
+    diferenciaJunio?: number;
+    proyeccionJulio?: number;
+    gastadoJulio?: number;
+    diferenciaJulio?: number;
+    proyeccionAgosto?: number;
+    gastadoAgosto?: number;
+    diferenciaAgosto?: number;
+    proyeccionSeptiembre?: number;
+    gastadoSeptiembre?: number;
+    diferenciaSeptiembre?: number;
+    proyeccionOctubre?: number;
+    gastadoOctubre?: number;
+    diferenciaOctubre?: number;
+    proyeccionNoviembre?: number;
+    gastadoNoviembre?: number;
+    diferenciaNoviembre?: number;
+    proyeccionDiciembre?: number;
+    gastadoDiciembre?: number;
+    diferenciaDiciembre?: number;
+}

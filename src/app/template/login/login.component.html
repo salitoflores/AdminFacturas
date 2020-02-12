@@ -1,0 +1,46 @@
+<div class="limiter animated fadeInLeft">
+    <div class="container-login100">
+        <div class="wrap-login100 p-t-50 p-b-90">
+            <form (ngSubmit)="onSubmit(fl)" #fl="ngForm"
+             class="login100-form validate-form flex-sb flex-w">
+
+                <span class="login100-form-title p-b-51">
+                    Login
+                </span>
+
+                <span *ngIf="fl.submitted && fl.controls['username'].errors" 
+                class="text-danger"Usuario no valido></span>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" 
+                           type="text" 
+                           name="username"  
+                           [(ngModel)]="usuario.usNombreUsuario"
+                           required
+                           [minlength]="8"
+                           placeholder="Username">
+
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <!-- <span class="text-danger">La contraseña debe de ser más de 6 letras</span> -->
+                <div class="wrap-input100 m-b-16" data-validate = "Password is required">
+                    <input class="input100"
+                           type="password" 
+                           name="pass" 
+                            [(ngModel)]="usuario.usClaveUsuario"
+                            required
+                            [minlength]="8"
+                           placeholder="Password">
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <div class="container-login100-form-btn m-t-17">
+                    <button class="login100-form-btn" type="submit">
+                        Ingresar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
