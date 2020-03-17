@@ -1,0 +1,74 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Facturas Registradas</h4>
+				<p class="category">Facturas pendientes para su
+					aprobaci&oacute;n</p>
+			</div>
+			<div class="content">
+				<div class="row" *ngIf="lstCatalogoArea.length > 0">
+					<div class="col-md-4">
+						<div class="card">
+							<div class="content">
+								<div class="form-group">
+									<label for="idMes">Area: </label> <select class="form-control"
+										[(ngModel)]="areaSeleccion.cpIdCatalogo"
+										name="idAreaSeleccion" #idCentroCosto="ngModel">
+										<option *ngFor="let catalogo of lstCatalogoArea"
+											[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+									</select>
+									<bi-errors [control]="idCentroCosto" ngClass="text-danger"></bi-errors>
+								</div>
+							</div>
+						</div>
+						<a (click)="cargarFacturasPendientes()" 
+							class="btn btn-fill btn-warning">Buscar</a>
+					</div>
+				</div>
+				<br />
+				<div class="row" *ngIf="lstFacturasPendientes.length > 0">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col" style="text-align: center;">Proveedor</th>
+								<th scope="col" style="text-align: center;">Factura</th>
+								<th scope="col" style="text-align: center;">Fecha Emisi&oacute;n</th>
+								<th scope="col" style="text-align: center;">Comentario</th>
+								<th scope="col" style="text-align: center;">Cuenta Contable</th>
+								<th scope="col" style="text-align: center;">Valor Presupuesto</th>
+								<th scope="col" style="text-align: center;">Factura</th>
+								<th scope="col" style="text-align: center;">Seleccionar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let factura of lstFacturasPendientes; let i = index">
+								<td>{{ factura.cpIdProveedor.cpCodigoCatalogo }}</td>
+								<td>{{ factura.dpNumeroFactura }}</td>
+								<td>{{ factura.dpFechaFactura | date }}</td>
+								<td>{{ factura.dpComentario }}</td>
+								<td>{{ factura.dpIdCabecera.cpIdCuentaContable.cpCodigoCatalogo }}</td>
+								<td>{{ factura.dpValorPresupuesto | currency }}</td>
+								<td><a
+									(click)="verFactura(factura.dpIdDetalle)">Ver Factura</a></td>
+								<td><input type="checkbox"
+									(change)="agregarFactura($event, factura, i)"></td>
+							</tr>
+						</tbody>
+					</table>
+					<br />
+					<div class="btn-group">
+						<a (click)="aprobarFacturas()" class="btn btn-fill btn-warning">Aprobar
+							facturas marcadas</a>
+					</div>
+					<br />					
+				</div>
+				<div class="row" *ngIf="lstFacturasPendientes.length > 0">
+						<p class="category">No existen facturas pendientes para su
+							aprobaci&oacute;n</p>
+					</div>
+					<br />
+			</div>
+		</div>
+	</div>
+</div>

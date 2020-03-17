@@ -41,6 +41,9 @@
 								<th scope="col">Nro. Factura</th>
 								<th scope="col">Valor sin impuestos</th>
 								<th scope="col">Total</th>
+								<th scope="col">RIDE</th>
+								<th scope="col">XML</th>
+								<th scope="col">Soporte</th>								
 							</tr>
 						</thead>
 						<tbody>
@@ -54,6 +57,12 @@
 								<td>{{detallePresupuesto.dpNumeroFactura}}</td>
 								<td>{{detallePresupuesto.dpSubtotal | currency}}</td>
 								<td>{{detallePresupuesto.dpValorPresupuesto | currency}}</td>
+								<td><a
+									(click)="verFactura(detallePresupuesto.dpIdDetalle)">Ver Factura</a></td>
+									<td><a
+									(click)="verXml(detallePresupuesto.dpIdDetalle)">Ver Xml</a></td>
+								<td><a
+									(click)="verAnexos(detallePresupuesto.dpIdDetalle)">Ver Soporte</a></td>
 							</tr>
 						</tbody>
 					</table>

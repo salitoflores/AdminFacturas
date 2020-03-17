@@ -15,7 +15,9 @@ import swal from 'sweetalert';
 export class LoginComponent implements OnInit {
 
     usuario: Usuario;
-    constructor(private usuarioService: UsuarioService, private router: Router) { }
+    resLogin: any;
+
+   constructor(private usuarioService: UsuarioService, private router: Router) { }
 
     ngOnInit() {
         this.usuario = {};
@@ -28,13 +30,12 @@ export class LoginComponent implements OnInit {
         }
         this.usuarioService.verificarUsuario(this.usuario).subscribe(
                 res => {
-                    this.usuario = res;
-                    localStorage.setItem('user', JSON.stringify(this.usuario));
-                    console.log(this.usuario);
+                    this.resLogin = res;
+                    localStorage.setItem('user', this.resLogin.tokenAcceso);
                     this.router.navigate(['home']);
                 },
                 err => {
-                    swal('Error!', err.error.descripcion, 'error');                    
+                    swal('Error!', err.error.descripcion, 'error');
                 }
             );
 

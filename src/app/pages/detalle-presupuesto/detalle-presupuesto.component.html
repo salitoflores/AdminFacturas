@@ -11,140 +11,177 @@
 					<form
 						(submit)="formDetallePresupuesto.valid && enviarDatosDetallePresupuesto()"
 						#formDetallePresupuesto="ngForm" novalidate>
+						<div class="content">
+							<div class="row">
+								<div class="card-deck col-md-4">
+									<div class="card">
+										<div class="content">
+											<div class="form-group">
+												<label for="idProveedor">Proveedor: *</label> <select
+													class="form-control"
+													[(ngModel)]="detallePresupuesto.idProveedor"
+													name="idProveedor" #idProveedor="ngModel" required
+													(change)="validarProveedor()">
+													<option *ngFor="let catalogo of lstCodigoCatalogoProveedor"
+														[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+												</select>
+												<bi-errors [control]="idProveedor" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="idFabricante">Fabricante: *</label> <select
+													class="form-control"
+													[(ngModel)]="detallePresupuesto.idFabricante"
+													name="idFabricante" #idFabricante="ngModel" required>
+													<option
+														*ngFor="let catalogo of lstCodigoCatalogoFabricante"
+														[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+												</select>
+												<bi-errors [control]="idFabricante" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="idArea">Mes: *</label> <select
+													class="form-control" [(ngModel)]="detallePresupuesto.idMes"
+													name="idMes" #idMes="ngModel" required>
+													<option *ngFor="let catalogo of lstCodigoCatalogoMes"
+														[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+												</select>
+												<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="numeroFactura">Numero Factura: *</label> <input
+													type="text" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpNumeroFactura"
+													name="numeroFactura" #numeroFactura="ngModel" required>
+												<bi-errors [control]="numeroFactura" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="fechaFactura">Fecha Emisi&oacute;n Factura: *</label> <br />
+												<p-calendar required="true" name="fechaRegistro"
+													[(ngModel)]="model.fechaRegistro" dateFormat="dd/mm/yy"></p-calendar>
+											</div>
+											<div class="form-group">
+												<label for="comentario">Comentario:</label>
+												<textarea type="text" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpComentario"
+													name="comentario" #comentario="ngModel" maxlength="254"></textarea>
+												<bi-errors [control]="comentario" ngClass="text-danger"></bi-errors>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-deck col-md-4">
+									<div class="card">
+										<div class="content">
+											<div class="form-group">
+												<label for="subtotal">Subtotal: *</label> <input
+													type="number" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpSubtotal"
+													name="subtotal" #subtotal="ngModel" required
+													(change)="calcularImpuestos()">
+												<bi-errors [control]="subtotal" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="iva">Iva: *</label> <input type="number"
+													class="form-control"
+													[(ngModel)]="detallePresupuesto.dpIva"
+													name="iva" #iva="ngModel" (change)="cambioIva()" required>
+												<bi-errors [control]="iva" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="retencion">Retencion: *</label> <input
+													type="number" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpRetencion"
+													name="retencion" #retencion="ngModel" required readonly>
+												<bi-errors [control]="retencion" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group form-check">
+												<input type="checkbox" class="form-check-input"
+													id="aplicaIce" [(ngModel)]="aplicaIce" name="aplicaIce"
+													(change)="calcularIce()"> <label
+													class="form-check-label" for="aplicaIce">Aplica ICE</label>
+											</div>
+											<div class="form-group" *ngIf="this.aplicaIce">
+												<label for="ice">ICE: *</label> <input type="number"
+													class="form-control"
+													[(ngModel)]="detallePresupuesto.dpIce"
+													(change)="recalcular()" name="ice" #ice="ngModel">
+												<bi-errors [control]="ice" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="isd">ISD: *</label> <input type="number"
+													class="form-control"
+													[(ngModel)]="detallePresupuesto.dpIsd"
+													name="isd" #isd="ngModel" required readonly>
+												<bi-errors [control]="isd" ngClass="text-danger"></bi-errors>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-deck col-md-4">
+									<div class="card">
+										<div class="content">
+											<div class="form-group">
+												<label for="valorTransferencia">Valor Transferencia:
+													*</label> <input type="text" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpValorTransferencia"
+													name="valorTransferencia" #valorTransferencia="ngModel"
+													required readonly>
+												<bi-errors [control]="valorTransferencia"
+													ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="valorPresupuesto">Total Presupuesto: *</label> <input
+													type="text" class="form-control"
+													[(ngModel)]="detallePresupuesto.dpValorPresupuesto"
+													name="valorPresupuesto" #valorPresupuesto="ngModel"
+													required readonly>
+												<bi-errors [control]="valorPresupuesto"
+													ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="totalFactura">Total Factura: </label> <input
+													type="text" class="form-control"
+													[(ngModel)]="model.dpTotalFactura"
+													name="totalFactura" #totalFactura="ngModel" required
+													readonly>
+												<bi-errors [control]="valorPresupuesto"
+													ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="documentoPdf">RIDE: *</label> <input
+													accept="application/pdf" type="file" class="form-control"
+													name="documentoPdf"
+													(change)="cargarFactura($event.target.files)">
 
-						<div class="col-md-4">
-							<div class="card">
-								<div class="content">
-									<div class="form-group">
-										<label for="idProveedor">Proveedor: *</label> <select
-											class="form-control"
-											[(ngModel)]="detallePresupuesto.idProveedor"
-											name="idProveedor" #idProveedor="ngModel" required
-											(change)="validarProveedor()">
-											<option *ngFor="let catalogo of lstCodigoCatalogoProveedor"
-												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
-										</select>
-										<bi-errors [control]="idProveedor" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="idFabricante">Fabricante: *</label> <select
-											class="form-control"
-											[(ngModel)]="detallePresupuesto.idFabricante"
-											name="idFabricante" #idFabricante="ngModel" required>
-											<option *ngFor="let catalogo of lstCodigoCatalogoFabricante"
-												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
-										</select>
-										<bi-errors [control]="idFabricante" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="idArea">Mes: *</label> <select
-											class="form-control" [(ngModel)]="detallePresupuesto.idMes"
-											name="idMes" #idMes="ngModel" required>
-											<option *ngFor="let catalogo of lstCodigoCatalogoMes"
-												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
-										</select>
-										<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="numeroFactura">Numero Factura: *</label> <input
-											type="text" class="form-control"
-											[(ngModel)]="detallePresupuesto.dpNumeroFactura"
-											name="numeroFactura" #numeroFactura="ngModel" required>
-										<bi-errors [control]="numeroFactura" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="fechaFactura">Fecha Factura: *</label> <br/>
-										<p-calendar required="true" name="fechaRegistro" [(ngModel)]="model.fechaRegistro" dateFormat="dd/mm/yy" ></p-calendar>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="content">
-									<div class="form-group">
-										<label for="comentario">Comentario:</label>
-										<textarea type="text" class="form-control"
-											[(ngModel)]="detallePresupuesto.dpComentario"
-											name="comentario" #comentario="ngModel"></textarea>
-										<bi-errors [control]="comentario" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="subtotal">Subtotal: *</label> <input type="text"
-											class="form-control"
-											[(ngModel)]="detallePresupuesto.dpSubtotal" name="subtotal"
-											#subtotal="ngModel" required (change)="calcularImpuestos()">
-										<bi-errors [control]="subtotal" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="iva">Iva: *</label> <input type="text"
-											class="form-control" [(ngModel)]="detallePresupuesto.dpIva"
-											name="iva" #iva="ngModel" required readonly>
-										<bi-errors [control]="iva" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="retencion">Retencion: *</label> <input type="text"
-											class="form-control"
-											[(ngModel)]="detallePresupuesto.dpRetencion" name="retencion"
-											#retencion="ngModel" required readonly>
-										<bi-errors [control]="retencion" ngClass="text-danger"></bi-errors>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="card">
-								<div class="content">
-									<div class="form-group form-check">
-										<input type="checkbox" class="form-check-input"
-											id="aplicaIce" [(ngModel)]="aplicaIce" name="aplicaIce" (change)="calcularIce()"> <label class="form-check-label"
-											for="aplicaIce">Aplica ICE</label>
-									</div>
-									<div class="form-group">
-										<label for="ice">ICE: *</label> <input type="text"
-											class="form-control" [(ngModel)]="detallePresupuesto.dpIce"
-											name="ice" #ice="ngModel" readonly>
-										<bi-errors [control]="ice" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="isd">ISD: *</label> <input type="text"
-											class="form-control" [(ngModel)]="detallePresupuesto.dpIsd"
-											name="isd" #isd="ngModel" required readonly>
-										<bi-errors [control]="isd" ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="valorTransferencia">Valor Transferencia: *</label>
-										<input type="text" class="form-control"
-											[(ngModel)]="detallePresupuesto.dpValorTransferencia"
-											name="valorTransferencia" #valorTransferencia="ngModel"
-											required readonly>
-										<bi-errors [control]="valorTransferencia"
-											ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="valorPresupuesto">Total Presupuesto: *</label> <input
-											type="text" class="form-control"
-											[(ngModel)]="detallePresupuesto.dpValorPresupuesto"
-											name="valorPresupuesto" #valorPresupuesto="ngModel" required
-											readonly>
-										<bi-errors [control]="valorPresupuesto"
-											ngClass="text-danger"></bi-errors>
-									</div>
-									<div class="form-group">
-										<label for="totalFactura">Total Factura: </label> <input
-											type="text" class="form-control"
-											[(ngModel)]="model.dpTotalFactura"
-											name="totalFactura" #totalFactura="ngModel" required
-											readonly>
-										<bi-errors [control]="valorPresupuesto"
-											ngClass="text-danger"></bi-errors>
-									</div>
-								</div>
-							</div>
-						</div>
+											</div>
+											<div class="form-group">
+												<label for="documentoXml">XML: </label> <input
+													accept="text/xml" type="file" class="form-control"
+													name="documentoXml"
+													(change)="cargarXml($event.target.files)">
 
-						<div class="btn-group">
-							<button type="submit" class="btn btn-fill btn-warning">Guardar</button>
+											</div>
+											<div class="form-group">
+												<label for="anexos">Anexos (ZIP): </label> <input
+													accept="zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed"
+													type="file" class="form-control" name="anexos"
+													(change)="cargarAnexos($event.target.files)">
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="card-deck col-md-4">
+									<div class="content">
+										<div class="btn-group">
+											<button type="submit" class="btn btn-fill btn-warning">Guardar</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</form>
 				</div>

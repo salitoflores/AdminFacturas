@@ -13,23 +13,23 @@ export class CabeceraPresupuestoService {
 
     constructor( private http: HttpClient ) { }
     guardarDatosCabeceraPresupuesto( cabeceraPresupuesto: CabeceraPresupuesto ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_CABECERA_PRESUPUESTO}/crearCabeceraPresupuesto`, cabeceraPresupuesto );
+        return this.http.post( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/crearCabeceraPresupuesto`, cabeceraPresupuesto );
     }
 
     listarCabeceraPresupuesto(): Observable<CabeceraPresupuesto[]> {
-        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/listarCabeceraPresupuesto` );
+        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/listarCabeceraPresupuesto` );
     }
 
     buscarCabeceraPresupuestoPorId( id: number ): Observable<any> {
-        return this.http.get<CabeceraPresupuesto>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/buscarCabeceraPresupuestoPorId/${id}` );
+        return this.http.get<CabeceraPresupuesto>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/buscarCabeceraPresupuestoPorId/${id}` );
     }
 
     buscarCabeceraFiltros( idCuentaContable: number, idArea: number, idResponsable: number ): Observable<any> {
-        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/buscarCabeceraFiltros/${idCuentaContable}/${idArea}/${idResponsable}`);
+        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/buscarCabeceraFiltros/${idCuentaContable}/${idArea}/${idResponsable}`);
     }
 
     consultaConsumoPresupuesto(): Observable<any> {
-        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/consultaConsumoPresupuesto`);
+        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/consultaConsumoPresupuesto`);
     }
 
 }

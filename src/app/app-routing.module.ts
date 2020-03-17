@@ -11,6 +11,11 @@ import { PrincipalComponent } from './template/principal/principal.component';
 import { AuthGuard } from './shared/util/auth-guard';
 import { DetallePresupuestoListaComponent } from './pages/detalle-presupuesto-lista/detalle-presupuesto-lista.component';
 import { ReporteGastoCuentaComponent } from './pages/reporte-gasto-cuenta/reporte-gasto-cuenta.component';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { RolComponent } from './pages/rol/rol.component';
+import { AccionComponent } from './pages/accion/accion.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 
 const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -22,6 +27,11 @@ const ROUTES: Routes = [
       children: [
             { path: 'catalogo', component: CatalogoComponent },
             { path: 'listar-catalogo', component: CatalogoListaComponent },
+            { path: 'usuario', component: UsuarioComponent },
+            { path: 'rol', component: RolComponent },
+            { path: 'accion', component: AccionComponent },
+            { path: 'menu', component: MenuComponent },
+            { path: 'aprobacion', component: AprobacionComponent },
             { path: 'cabecera-presupuesto', component: CabeceraPresupuestoComponent },
             { path: 'cabecera-presupuesto-lista', component: CabeceraPresupuestoListaComponent },
             { path: 'detalle-presupuesto', component: DetallePresupuestoComponent },

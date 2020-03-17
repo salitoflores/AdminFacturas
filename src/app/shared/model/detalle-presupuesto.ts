@@ -25,4 +25,7 @@ export interface DetallePresupuesto {
     dpFechaFactura?: Date;
     dpEstadoLote?: number;
     usIdUsuario?: number;
+    dpImgFactura?: any;
+    dpImgXmlFactura?: any;
+    dpImgAnexos?: any;
 }

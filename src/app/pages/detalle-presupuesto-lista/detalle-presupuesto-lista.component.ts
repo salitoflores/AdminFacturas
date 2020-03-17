@@ -5,6 +5,8 @@ import { CatalogoService } from '../../services/catalogo.service';
 import { DetallePresupuestoService } from '../../services/detalle-presupuesto.service';
 import { DetallePresupuesto } from '../../shared/model/detalle-presupuesto';
 import { Router } from '@angular/router';
+import { saveAs } from 'file-saver';
+import { ImFactura } from '../../shared/model/im-factura';
 
 @Component({
   selector: 'bi-detalle-presupuesto-lista',
@@ -17,6 +19,8 @@ export class DetallePresupuestoListaComponent implements OnInit {
     mes: Catalogo;
     lstCodigoCatalogoMes: Catalogo[] = [];
     lstDetallePresupuestoFiltrado: DetallePresupuesto[] = [];
+    imgFactura: ImFactura = {};
+
 
   constructor(private route: ActivatedRoute, private catalogoService: CatalogoService,
           private detallePresupuestoService: DetallePresupuestoService, private router: Router) { }
@@ -50,4 +54,51 @@ export class DetallePresupuestoListaComponent implements OnInit {
       this.router.navigate( ['home/cabecera-presupuesto-lista'], { queryParams: { idCabecera: this.id } } );
   }
 
+  verFactura( id: number ) {
+      this.detallePresupuestoService.buscarFactura( id ).subscribe(
+              data => {
+                  console.log(data);
+                  this.imgFactura.dpImgFactura = data;
+                  console.log(this.imgFactura.dpImgFactura);
+                   const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/pdf' });
+                   const url = window.URL.createObjectURL(blob);
+                  window.open(url, 'Factura');
+              }, error => {
+                  console.log(error);
+                  console.log('Error downloading the file.');
+              }
+      );
+  }
+  
+  verXml( id: number ) {
+      this.detallePresupuestoService.buscarXml( id ).subscribe(
+              data => {
+                  console.log(data);
+                  this.imgFactura.dpImgFactura = data;
+                  console.log(this.imgFactura.dpImgFactura);
+                   const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/xml' });
+                   const filename = 'facturaXml.xml';
+                   saveAs(blob, filename);
+              }, error => {
+                  console.log(error);
+                  console.log('Error downloading the file.');
+              }
+      );
+  }
+
+  verAnexos( id: number ) {
+      this.detallePresupuestoService.buscarAnexos( id ).subscribe(
+              data => {
+                  console.log(data);
+                  this.imgFactura.dpImgFactura = data;
+                  console.log(this.imgFactura.dpImgFactura);
+                   const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/zip' });
+                   const filename = 'anexos.zip';
+                   saveAs(blob, filename);
+              }, error => {
+                  console.log(error);
+                  console.log('Error downloading the file.');
+              }
+      );
+  }
 }

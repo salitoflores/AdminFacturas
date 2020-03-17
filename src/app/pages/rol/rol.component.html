@@ -1,0 +1,100 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Roles del Sistema</h4>
+				<p class="category">Ingreso y modificaci&oacute;n</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<form (submit)="formRol.form.valid && guardarDatosRol()"
+						#formRol="ngForm" novalidate>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="nombreRol">Rol: *</label> <input type="text"
+											class="form-control" [(ngModel)]="rol.roNombreRol"
+											name="nombreRol" #nombreRol="ngModel" required>
+										<bi-errors [control]="nombreRol" ngClass="text-danger"></bi-errors>
+									</div>
+									<div class="form-group">
+										<label for="descripcionRol">Descripci&oacute;n del
+											Rol: *</label>
+										<textarea type="text" class="form-control"
+											[(ngModel)]="rol.roDescripcionRol" name="descripcionRol"
+											#descripcionRol="ngModel" required></textarea>
+										<bi-errors [control]="descripcionRol" ngClass="text-danger"></bi-errors>
+									</div>
+									<div class="form-group form-check">
+										<label class="form-check-label" for="estadoRol">Activo:</label>&nbsp;
+										&nbsp; <input type="checkbox" class="form-check-input"
+											id="estadoRol" [(ngModel)]="rol.roEstadoRol" name="estadoRol">
+									</div>
+								</div>
+							</div>
+							<button type="submit" class="btn btn-fill btn-warning">Guardar</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card col-md-12">
+			<div class="header">
+				<p class="category">Roles registrados</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<table class="table table-bordered"
+						*ngIf="lstRolesRegistrados.length>0">
+						<thead class="thead-dark">
+							<tr>
+								<th scope="col" style="text-align: center;">Editar</th>
+								<th scope="col" style="text-align: center;">Rol</th>
+								<th scope="col" style="text-align: center;">Descripci&oacute;n</th>
+								<th scope="col" style="text-align: center;">Estado</th>
+								<th scope="col" style="text-align: center;">Acciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let rolTabla of lstRolesRegistrados">
+								<td style="text-align: center;"><a
+									(click)="modificarRol(rolTabla)"><img
+										src="./assets/img/editar.png" width="20" height="20" alt=""></a></td>
+								<td>{{rolTabla.roNombreRol}}</td>
+								<td>{{rolTabla.roDescripcionRol}}</td>
+								<td *ngIf="rolTabla.roEstadoRol == 1">Activo</td>
+								<td *ngIf="rolTabla.roEstadoRol == 0">Inactivo</td>
+								<td style="text-align: center;"><a
+									(click)="acciones(rolTabla)"><img
+										src="./assets/img/editar.png" width="20" height="20" alt=""></a></td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+		</div>
+		<div class="card col-md-12">
+			<div class="header">
+				<p class="category">Acciones por Roles</p>
+			</div>
+			<div class="content" >
+				<div class="row">
+					<p-pickList [source]="accionesDisponibles"
+						[target]="accionesAsignadas" [sourceStyle]="{'width':'25em'}"
+						[targetStyle]="{'width':'25em'}"> <ng-template
+						let-accion pTemplate="item">
+					<div class="ui-helper-clearfix">
+						<div>{{ accion.acNombreAccion }}</div>
+					</div>
+					</ng-template> </p-pickList>
+				</div>
+				<br/>
+				<a (click)="guardarAcciones()" class="btn btn-fill btn-warning">Guardar</a>
+				<br/>
+				<br/>
+			</div>			
+		</div>
+	</div>
+</div>

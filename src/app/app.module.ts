@@ -9,6 +9,9 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+
+import { PickListModule } from 'primeng/picklist';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +31,12 @@ import { GeneralDirectivesModule } from './components/directives/general-directi
 import { DetallePresupuestoListaComponent } from './pages/detalle-presupuesto-lista/detalle-presupuesto-lista.component';
 import { ReporteGastoCuentaComponent } from './pages/reporte-gasto-cuenta/reporte-gasto-cuenta.component';
 import { DatePickerI18n } from './date-picker-i18n';
+import { httpIntecerptorsProviders } from './shared/interceptor';
+import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { RolComponent } from './pages/rol/rol.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { AccionComponent } from './pages/accion/accion.component';
+import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -49,7 +58,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PrincipalComponent,
     ErrorsComponent,
     DetallePresupuestoListaComponent,
-    ReporteGastoCuentaComponent],
+    ReporteGastoCuentaComponent,
+    UsuarioComponent,
+    RolComponent,
+    MenuComponent,
+    AccionComponent,
+    AprobacionComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -59,8 +73,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HttpClientModule,
     NgbModule,
     CalendarModule,
-    GeneralDirectivesModule
-  ],
+    GeneralDirectivesModule,
+    PickListModule,
+    HttpModule
+],
   providers: [{
       provide: NgbDatepickerI18n,
       useClass: DatePickerI18n
@@ -68,8 +84,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
         provide: PERFECT_SCROLLBAR_CONFIG,
         useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
-
+    },
+    httpIntecerptorsProviders
               ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,10 @@
+body .ui-button {
+	color: #fff !important;
+    background-color: #f0ad4e!important;
+    border-color: #eea236!important;
+}
+
+body .ui-picklist .ui-picklist-list .ui-picklist-item.ui-state-highlight {
+    background-color: #f0ad4e!important;
+    color: #ffffff;
+}

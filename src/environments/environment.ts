@@ -5,6 +5,9 @@
 export const environment = {
   production: false,
   urlSrvUsuario: '/srvPresupuestoTi-web/rest/usuario',
+  urlSrvRol: '/srvPresupuestoTi-web/rest/rol',
+  urlSrvAccion: '/srvPresupuestoTi-web/rest/accion',
+  urlSrvMenu: '/srvPresupuestoTi-web/rest/menu',
   urlSrvCatalogo: '/srvPresupuestoTi-web/rest/catalogo',
   urlSrvCabeceraPresupuesto: '/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
   urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto'
