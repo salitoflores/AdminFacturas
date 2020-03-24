@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         if ( form.invalid ) {
             return;
         }
+        console.log(this.usuario);
         this.usuarioService.verificarUsuario(this.usuario).subscribe(
                 res => {
                     this.resLogin = res;

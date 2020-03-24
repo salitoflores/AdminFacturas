@@ -154,11 +154,15 @@ export class DetallePresupuestoComponent implements OnInit {
 
     enviarDatosDetallePresupuesto() {
         this.setearValores();
-        if ( this.imagenPdf === undefined ) {
-            swal( { title: 'Error!', text: 'No ha cargardo el RIDE.!', icon: 'error' } );
-        } else {
+        //if ( this.imagenPdf === undefined ) {
+            //swal( { title: 'Error!', text: 'No ha cargardo el RIDE.!', icon: 'error' } );
+        //} else {
             this.detallePresupuestoService.guardarDatosDetallePresupuesto( this.detallePresupuesto, this.imagenPdf, this.imagenXml, this.imagenAnexos ).subscribe(
                 res => {
+                    console.log(this.detallePresupuesto);
+                    console.log(this.imagenPdf);
+                    console.log(this.imagenXml);
+                    console.log(this.imagenAnexos);
                     swal( { title: 'OK!', text: 'Registro exitoso', icon: 'success' } );
                     this.aplicaIce = false;
                     this.detallePresupuesto = {};
@@ -176,7 +180,7 @@ export class DetallePresupuestoComponent implements OnInit {
                     swal( { title: 'Error!', text: err.error.descripcion, icon: 'error' } );
                 }
             );
-        }
+        //}
     }
 
     cargarFactura( files: FileList ) {
@@ -193,6 +197,7 @@ export class DetallePresupuestoComponent implements OnInit {
             console.log( files.item( 0 ) );
             this.imagenXml = files.item( 0 );
         } else {
+            this.imagenXml = null;
             swal( { title: 'Error!', text: 'Formato no admitido', icon: 'error' } );
         }
     }
@@ -203,6 +208,7 @@ export class DetallePresupuestoComponent implements OnInit {
             console.log( files.item( 0 ) );
             this.imagenAnexos = files.item( 0 );
         } else {
+            this.imagenAnexos = null;
             swal( { title: 'Error!', text: 'Formato no admitido', icon: 'error' } );
         }
     }

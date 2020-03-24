@@ -38,20 +38,22 @@
 								<th scope="col" style="text-align: center;">Cuenta Contable</th>
 								<th scope="col" style="text-align: center;">Valor Presupuesto</th>
 								<th scope="col" style="text-align: center;">Factura</th>
+								<th scope="col" style="text-align: center;">Registrador</th>
 								<th scope="col" style="text-align: center;">Seleccionar</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr *ngFor="let factura of lstFacturasPendientes; let i = index">
 								<td>{{ factura.cpIdProveedor.cpCodigoCatalogo }}</td>
-								<td>{{ factura.dpNumeroFactura }}</td>
-								<td>{{ factura.dpFechaFactura | date }}</td>
+								<td align="center">{{ factura.dpNumeroFactura }}</td>
+								<td align="center">{{ factura.dpFechaFactura | date:'yyyy-mm-dd' }}</td>
 								<td>{{ factura.dpComentario }}</td>
 								<td>{{ factura.dpIdCabecera.cpIdCuentaContable.cpCodigoCatalogo }}</td>
-								<td>{{ factura.dpValorPresupuesto | currency }}</td>
-								<td><a
+								<td align="right">{{ factura.dpValorPresupuesto | currency }}</td>
+								<td align="center"><a
 									(click)="verFactura(factura.dpIdDetalle)">Ver Factura</a></td>
-								<td><input type="checkbox"
+								<td align="center">{{ factura.usIdUsuario.usDescripcionUsuario }}</td>
+								<td align="center"><input type="checkbox"
 									(change)="agregarFactura($event, factura, i)"></td>
 							</tr>
 						</tbody>
