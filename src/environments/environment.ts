@@ -11,7 +11,7 @@ export const environment = {
   urlSrvCatalogo: '/srvPresupuestoTi-web/rest/catalogo',
   urlSrvCabeceraPresupuesto: '/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
   urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto'
-};
+}; 
 
 /*
  * In development mode, for easier debugging, you can ignore zone related error
