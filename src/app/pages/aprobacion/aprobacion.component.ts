@@ -21,11 +21,14 @@ export class AprobacionComponent implements OnInit {
     lstCatalogoArea: Catalogo[] = [];
     areaSeleccion: Catalogo = {};
     imgFactura: ImFactura = {};
+    flagMensajePendientes: boolean;
     fileUrl;
 
     constructor( private detalleService: DetallePresupuestoService,
         private usuarioService: UsuarioService,
-        private catalogoService: CatalogoService) { }
+        private catalogoService: CatalogoService) { 
+            this.flagMensajePendientes = false;
+        }
 
     ngOnInit() {
         if ( validarAccion( 'APRFAC2' ) ) {
@@ -53,6 +56,11 @@ export class AprobacionComponent implements OnInit {
             this.detalleService.recuperarFacturasEstado0( idArea ).subscribe(
                 res => {
                     this.lstFacturasPendientes = res;
+                    if (this.lstFacturasPendientes.length > 0 ) {
+                        this.flagMensajePendientes = false;
+                    } else {
+                        this.flagMensajePendientes = true;
+                    }
                     console.log( this.lstFacturasPendientes );
                 },
                 err => {
@@ -68,6 +76,11 @@ export class AprobacionComponent implements OnInit {
             this.detalleService.recuperarFacturasEstado1( this.areaSeleccion.cpIdCatalogo ).subscribe(
                 res => {
                     this.lstFacturasPendientes = res;
+                    if (this.lstFacturasPendientes.length > 0 ) {
+                        this.flagMensajePendientes = false;
+                    } else {
+                        this.flagMensajePendientes = true;
+                    }
                     console.log( this.lstFacturasPendientes );
                 },
                 err => {
@@ -99,6 +112,7 @@ export class AprobacionComponent implements OnInit {
             this.detalleService.aprobarFacturasAprobador1( this.lstFacturasAprobar ).subscribe(
                 res => {
                     swal( 'OK!', 'Registro exitoso', 'success' );
+                    this.cargarFacturasPendientes();
                 },
                 err => {
                     if ( err.status == 401 ) {
@@ -113,6 +127,7 @@ export class AprobacionComponent implements OnInit {
             this.detalleService.aprobarFacturasAprobador2( this.lstFacturasAprobar ).subscribe(
                 res => {
                     swal( 'OK!', 'Registro exitoso', 'success' );
+                    this.cargarFacturasPendientes();
                 },
                 err => {
                     if ( err.status == 401 ) {

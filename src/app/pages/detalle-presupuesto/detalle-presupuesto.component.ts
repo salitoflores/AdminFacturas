@@ -154,15 +154,15 @@ export class DetallePresupuestoComponent implements OnInit {
 
     enviarDatosDetallePresupuesto() {
         this.setearValores();
-        //if ( this.imagenPdf === undefined ) {
-            //swal( { title: 'Error!', text: 'No ha cargardo el RIDE.!', icon: 'error' } );
-        //} else {
+        if ( this.imagenPdf === undefined ) {
+            swal( { title: 'Error!', text: 'No ha cargardo el RIDE.!', icon: 'error' } );
+        } else {
+            console.log("Antes de guardar" + this.detallePresupuesto);
+            console.log(this.imagenPdf);
+            console.log(this.imagenXml);
+            console.log(this.imagenAnexos);
             this.detallePresupuestoService.guardarDatosDetallePresupuesto( this.detallePresupuesto, this.imagenPdf, this.imagenXml, this.imagenAnexos ).subscribe(
                 res => {
-                    console.log(this.detallePresupuesto);
-                    console.log(this.imagenPdf);
-                    console.log(this.imagenXml);
-                    console.log(this.imagenAnexos);
                     swal( { title: 'OK!', text: 'Registro exitoso', icon: 'success' } );
                     this.aplicaIce = false;
                     this.detallePresupuesto = {};
@@ -180,7 +180,7 @@ export class DetallePresupuestoComponent implements OnInit {
                     swal( { title: 'Error!', text: err.error.descripcion, icon: 'error' } );
                 }
             );
-        //}
+        }
     }
 
     cargarFactura( files: FileList ) {
@@ -215,7 +215,7 @@ export class DetallePresupuestoComponent implements OnInit {
 
     setearValores() {
         this.detallePresupuesto.dpFechaFactura = new Date( this.model.fechaRegistro );
-        this.detallePresupuesto.usIdUsuario = obtenerIdUsuario();
+        this.detallePresupuesto.idUsuario = obtenerIdUsuario();
     }
 
 }

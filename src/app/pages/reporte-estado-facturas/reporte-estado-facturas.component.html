@@ -1,0 +1,46 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Estado de las Facturas</h4>
+				<p class="category">Consulta por Mes y Usuario de Registro de Factura</p>
+			</div>
+			<div class="content">
+				<div class="row" *ngIf="lstCatalogoArea.length > 0">
+					<div class="col-md-4">
+						<div class="card">
+							<div class="content">
+								<div class="form-group">
+									<label for="idMes">Area: </label> <select class="form-control"
+										[(ngModel)]="areaSeleccion.cpIdCatalogo"
+										name="idAreaSeleccion" #idCentroCosto="ngModel">
+										<option *ngFor="let catalogo of lstCatalogoArea"
+											[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+									</select>
+									<bi-errors [control]="idCentroCosto" ngClass="text-danger"></bi-errors>
+								</div>
+							</div>
+						</div>
+						<a (click)="cargarFacturasPendientes()" 
+							class="btn btn-fill btn-warning">Buscar</a>
+					</div>
+				</div>
+				<br />
+				<div class="row" *ngIf="lstFacturasPendientes.length > 0">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th scope="col" style="text-align: center;">Proveedor</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let factura of lstFacturasPendientes; let i = index">
+								<td>{{ factura.cpIdProveedor.cpCodigoCatalogo }}</td>
+							</tr>
+						</tbody>
+					</table>				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -17,9 +17,18 @@ export class DetallePresupuestoService {
 //        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/crearDetallePresupuesto`, detallePresupuesto );
         const formData: FormData = new FormData();
         formData.append('detallePresupuesto', JSON.stringify(detallePresupuesto));
+        console.log(fileImg);
         formData.append('fileImg', fileImg);
-        formData.append('fileXml', fileXml);
-        formData.append('fileAnexo', fileAnexo);
+        if (fileXml == undefined) {
+            formData.append('fileXml', null);
+        } else {
+            formData.append('fileXml', fileXml);
+        }
+        if (fileAnexo == undefined) {
+            formData.append('fileAnexo', null);
+        } else {
+            formData.append('fileAnexo', fileAnexo);
+        }
         return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/crearDetallePresupuesto`, formData );
     }
 

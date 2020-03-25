@@ -7,6 +7,7 @@ import { DetallePresupuesto } from '../../shared/model/detalle-presupuesto';
 import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { ImFactura } from '../../shared/model/im-factura';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'bi-detalle-presupuesto-lista',
@@ -77,8 +78,13 @@ export class DetallePresupuestoListaComponent implements OnInit {
                   this.imgFactura.dpImgFactura = data;
                   console.log(this.imgFactura.dpImgFactura);
                    const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/xml' });
-                   const filename = 'facturaXml.xml';
+                   if (blob.size>0) {
+                    const filename = 'facturaXml.xml';
                    saveAs(blob, filename);
+                   } else {
+                    swal( { title: 'Warning!', text: 'No existe archivo cargado', icon: 'info' } );
+                   }
+                   
               }, error => {
                   console.log(error);
                   console.log('Error downloading the file.');
@@ -93,8 +99,12 @@ export class DetallePresupuestoListaComponent implements OnInit {
                   this.imgFactura.dpImgFactura = data;
                   console.log(this.imgFactura.dpImgFactura);
                    const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/zip' });
-                   const filename = 'anexos.zip';
+                   if (blob.size>0) {
+                    const filename = 'Soporte.zip';
                    saveAs(blob, filename);
+                   } else {
+                    swal( { title: 'Warning!', text: 'No existe archivo cargado', icon: 'info' } );
+                   }
               }, error => {
                   console.log(error);
                   console.log('Error downloading the file.');

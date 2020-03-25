@@ -37,6 +37,7 @@ import { RolComponent } from './pages/rol/rol.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { AccionComponent } from './pages/accion/accion.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
+import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -63,7 +64,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RolComponent,
     MenuComponent,
     AccionComponent,
-    AprobacionComponent],
+    AprobacionComponent,
+    ReporteEstadoFacturasComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

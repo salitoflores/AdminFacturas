@@ -1,5 +1,6 @@
 import { CabeceraPresupuesto } from '../model/cabecera-presupuesto';
 import { Catalogo } from './catalogo';
+import { Usuario } from './usuario';
 
 export interface DetallePresupuesto {
     dpIdDetalle?: number;
@@ -24,7 +25,8 @@ export interface DetallePresupuesto {
     dpValorPresupuesto?: number;
     dpFechaFactura?: Date;
     dpEstadoLote?: number;
-    usIdUsuario?: number;
+    usIdUsuario?: Usuario;
+    idUsuario?: number;
     dpImgFactura?: any;
     dpImgXmlFactura?: any;
     dpImgAnexos?: any;

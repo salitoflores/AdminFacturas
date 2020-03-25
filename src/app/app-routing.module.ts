@@ -16,6 +16,7 @@ import { RolComponent } from './pages/rol/rol.component';
 import { AccionComponent } from './pages/accion/accion.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
+import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
 
 const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -37,6 +38,7 @@ const ROUTES: Routes = [
             { path: 'detalle-presupuesto', component: DetallePresupuestoComponent },
             { path: 'detalle-presupuesto-lista', component: DetallePresupuestoListaComponent },
             { path: 'reporte-gasto-cuenta', component: ReporteGastoCuentaComponent },
+            { path: 'reporte-estado-facturas', component: ReporteEstadoFacturasComponent }
       ]}
 ];
 
