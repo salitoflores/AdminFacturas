@@ -19,7 +19,7 @@ export class CatalogoComponent implements OnInit {
     flagFacturaExterior: boolean;
     flagTipoGasto: boolean;
     lstCatalogoPadre: Catalogo[] = [];
-lstCatalogoTipoGasto: Catalogo[] = [];
+    lstCatalogoTipoGasto: Catalogo[] = [];
     lstCatalogoHijo: Catalogo[] = [];
 
     constructor( private catalogoService: CatalogoService, private route: ActivatedRoute ) { }

@@ -65,7 +65,10 @@ export class DetallePresupuestoComponent implements OnInit {
         if ( this.idDetalle != null ) {
             this.detallePresupuestoService.buscarDetallePresupuestoPorId( this.idDetalle ).subscribe( res => {
                 this.detallePresupuesto = res;
+                console.log(this.detallePresupuesto);
                 this.model.dpTotalFactura = this.model.dpTotalFactura = +this.detallePresupuesto.dpValorPresupuesto + +this.detallePresupuesto.dpIva;
+                this.model.fechaFacAxu = new Date(this.detallePresupuesto.dpFechaFactura);
+                
             },
                 err => {
                     console.error( err );
