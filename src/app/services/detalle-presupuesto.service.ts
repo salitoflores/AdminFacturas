@@ -36,6 +36,10 @@ export class DetallePresupuestoService {
         return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/buscarDetalleCabeceraMes/${idCabecera}/${idMes}` );
     }
 
+    cargarFacturasFiltroMesUsuarioRegistro( idMes: number, idUsuario: number ): Observable<DetallePresupuesto[]> {
+        return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/cargarFacturasFiltroMesUsuarioRegistro/${idMes}/${idUsuario}` );
+    }
+
     buscarDetallePresupuestoPorId( idDetalle: number ): Observable<any> {
         return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/buscarDetallePresupuestoPorId/${idDetalle}` );
     }

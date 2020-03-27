@@ -17,7 +17,7 @@ export class DetallePresupuestoComponent implements OnInit {
 
     aplicaIce: boolean;
     detallePresupuesto: DetallePresupuesto;
-    model = { fechaRegistro: new Date(), dpTotalFactura: 0.0 };
+    model = { fechaFacAxu: new Date(), dpTotalFactura: 0.0 };
     idCabecera: number;
     idDetalle: number;
     lstCodigoCatalogoProveedor: Catalogo[] = [];
@@ -171,7 +171,7 @@ export class DetallePresupuestoComponent implements OnInit {
                     this.detallePresupuesto.cpIdProveedor = {};
                     this.detallePresupuesto.cpIdFabricante = {};
                     this.detallePresupuesto.cpMes = {};
-                    this.model = { fechaRegistro: new Date(), dpTotalFactura: 0.0 };
+                    this.model = { fechaFacAxu: new Date(), dpTotalFactura: 0.0 };
                     this.imagenPdf = null;
                     this.imagenXml = null;
                     this.imagenAnexos = null;
@@ -214,7 +214,7 @@ export class DetallePresupuestoComponent implements OnInit {
     }
 
     setearValores() {
-        this.detallePresupuesto.dpFechaFactura = new Date( this.model.fechaRegistro );
+        this.detallePresupuesto.dpFechaFactura = new Date( this.model.fechaFacAxu );
         this.detallePresupuesto.idUsuario = obtenerIdUsuario();
     }
 

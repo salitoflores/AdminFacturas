@@ -2,45 +2,89 @@
 	<div class="row">
 		<div class="card col-md-12">
 			<div class="header">
-				<h4 class="title">Estado de las Facturas</h4>
-				<p class="category">Consulta por Mes y Usuario de Registro de Factura</p>
+				<h4 class="title">Consulta de Facturas</h4>
+				<p class="category">Informacion detallada de Facturas</p>
 			</div>
 			<div class="content">
-				<div class="row" *ngIf="lstCatalogoArea.length > 0">
-					<div class="col-md-4">
-						<div class="card">
-							<div class="content">
-								<div class="form-group">
-									<label for="idMes">Area: </label> <select class="form-control"
-										[(ngModel)]="areaSeleccion.cpIdCatalogo"
-										name="idAreaSeleccion" #idCentroCosto="ngModel">
-										<option *ngFor="let catalogo of lstCatalogoArea"
-											[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
-									</select>
-									<bi-errors [control]="idCentroCosto" ngClass="text-danger"></bi-errors>
+				<div class="row">
+					<form
+						(submit)="formReporteEstadoFacturas.form.valid && cargarFacturas()"
+						#formReporteEstadoFacturas="ngForm" novalidate>
+						<div class="col-md-4">
+              <div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idMes">Mes: *</label> <select class="form-control"
+											[(ngModel)]="mes.cpIdCatalogo" name="idMes" #idMes="ngModel"
+											required>
+											<option *ngFor="let catalogo of lstCodigoCatalogoMes"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
+										</select>
+										<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
+									</div>
+								
+									<div class="form-group">
+										<label for="idUsuario">Usuario: *</label> <select class="form-control"
+											[(ngModel)]="usuarioFiltro.usIdUsuario" name="idUsuario" #idUsuario="ngModel"
+											required>
+											<option *ngFor="let usu of lstUsuariosRegistrados"
+												[value]="usu.usIdUsuario">{{usu.usDescripcionUsuario}}</option>
+										</select>
+										<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="card-deck col-md-4">
+                      <div class="content">
+                        <div class="btn-group">
+                          <button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 								</div>
 							</div>
-						</div>
-						<a (click)="cargarFacturasPendientes()" 
-							class="btn btn-fill btn-warning">Buscar</a>
-					</div>
-				</div>
-				<br />
-				<div class="row" *ngIf="lstFacturasPendientes.length > 0">
-					<table class="table table-bordered">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="content">
+				<div class="row">
+				
+					<table class="table table-bordered" *ngIf="lstFacturas.length > 0">
 						<thead>
 							<tr>
-								<th scope="col" style="text-align: center;">Proveedor</th>
+                <th scope="col">Proveedor</th>
+                <th scope="col">Fecha Registro</th>
+                <th scope="col">Fecha Emisión Factura</th>
+								<th scope="col">Nro. Factura</th>
+								<th scope="col">Total</th>
+								<th scope="col">RIDE</th>
+								<th scope="col">Estado</th>						
 							</tr>
 						</thead>
 						<tbody>
-							<tr *ngFor="let factura of lstFacturasPendientes; let i = index">
-								<td>{{ factura.cpIdProveedor.cpCodigoCatalogo }}</td>
+							<tr
+								*ngFor="let facturas of lstFacturas">
+                <td>{{facturas.cpIdProveedor.cpCodigoCatalogo}}</td>
+                <td align="center">{{facturas.dpFechaRegistro | date:'dd/MM/yyyy' }}</td>
+                <td align="center">{{facturas.dpFechaFactura | date:'d/M/yy' }}</td>
+								<td align="right">{{facturas.dpNumeroFactura}}</td>
+								<td align="right">{{facturas.dpValorPresupuesto | currency}}</td>
+								<td align="center"><a
+									(click)="verFactura(facturas.dpIdDetalle)">Ver Factura</a></td>
+                <td align="center" *ngIf="facturas.dpEstadoLote == -1">Eliminada</td>
+                <td align="center" *ngIf="facturas.dpEstadoLote == 0">Registrada</td>
+                <td align="center" *ngIf="facturas.dpEstadoLote == 1">Aprobada Subgerencia</td>
+                <td align="center" *ngIf="facturas.dpEstadoLote == 2">Aprobada Gerencia</td>
+                <td align="center" *ngIf="facturas.dpEstadoLote == 3">Entregada CI</td>
 							</tr>
 						</tbody>
-					</table>				
+					</table>
 				</div>
-			</div>
-		</div>
-	</div>
+      </div>
+      
+    </div>
+  </div>
 </div>
