@@ -69,7 +69,7 @@
 								*ngFor="let facturas of lstFacturas">
                 <td>{{facturas.cpIdProveedor.cpCodigoCatalogo}}</td>
                 <td align="center">{{facturas.dpFechaRegistro | date:'dd/MM/yyyy' }}</td>
-                <td align="center">{{facturas.dpFechaFactura | date:'d/M/yy' }}</td>
+                <td align="center">{{facturas.dpFechaFactura | date:'dd/MM/yyyy' }}</td>
 								<td align="right">{{facturas.dpNumeroFactura}}</td>
 								<td align="right">{{facturas.dpValorPresupuesto | currency}}</td>
 								<td align="center"><a

@@ -46,7 +46,7 @@
 							<tr *ngFor="let factura of lstFacturasPendientes; let i = index">
 								<td>{{ factura.cpIdProveedor.cpCodigoCatalogo }}</td>
 								<td align="center">{{ factura.dpNumeroFactura }}</td>
-								<td align="center">{{ factura.dpFechaFactura | date:'d/M/yy' }}</td>
+								<td align="center">{{ factura.dpFechaFactura | date:'ddMM/yyyy' }}</td>
 								<td>{{ factura.dpComentario }}</td>
 								<td>{{ factura.dpIdCabecera.cpIdCuentaContable.cpCodigoCatalogo }}</td>
 								<td align="right">{{ factura.dpValorPresupuesto | currency }}</td>
