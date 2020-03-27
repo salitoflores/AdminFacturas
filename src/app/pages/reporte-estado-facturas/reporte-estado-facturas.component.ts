@@ -5,6 +5,7 @@ import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../shared/model/usuario';
 import { DetallePresupuestoService } from 'src/app/services/detalle-presupuesto.service';
 import { DetallePresupuesto } from 'src/app/shared/model/detalle-presupuesto';
+import { ImFactura } from '../../shared/model/im-factura';
 
 @Component({
   selector: 'bi-reporte-estado-facturas',
@@ -18,6 +19,7 @@ export class ReporteEstadoFacturasComponent implements OnInit {
     lstFacturas: DetallePresupuesto[] = [];
     mes: Catalogo;
     usuarioFiltro: Usuario;
+    imgFactura: ImFactura = {};
 
   constructor( private catalogoService: CatalogoService,
     private usuarioService: UsuarioService, 
@@ -56,5 +58,21 @@ export class ReporteEstadoFacturasComponent implements OnInit {
           console.error( err );
       } );
   }
+
+  verFactura( id: number ) {
+    this.detallePresupuestoService.buscarFactura( id ).subscribe(
+            data => {
+                console.log(data);
+                this.imgFactura.dpImgFactura = data;
+                console.log(this.imgFactura.dpImgFactura);
+                 const blob = new Blob( [this.imgFactura.dpImgFactura], { type: 'application/pdf' });
+                 const url = window.URL.createObjectURL(blob);
+                window.open(url);
+            }, error => {
+                console.log(error);
+                console.log('Error downloading the file.');
+            }
+    );
+}
 
 }
