@@ -15,7 +15,7 @@
 									<div class="form-group">
 										<label for="nombreMenu">Men&uacute;: *</label> <input
 											type="text" class="form-control"
-											[(ngModel)]="menu.acNombreMenu" name="nombreMenu"
+											[(ngModel)]="menu.meNombreMenu" name="nombreMenu"
 											#nombreMenu="ngModel" required>
 										<bi-errors [control]="nombreMenu" ngClass="text-danger"></bi-errors>
                                     </div>                                    
@@ -71,7 +71,7 @@
 										src="./assets/img/editar.png" width="20" height="20" alt=""></a></td>
 								<td>{{ menuTabla.meNombreMenu }}</td>
 								<td>{{ menuTabla.meUrlMenu }}</td>
-								<td>{{ menuTabla.meIdPadreMenu }}</td>
+								<td>{{ menuTabla.meIdMenuPadre }}</td>
 								<td *ngIf="menuTabla.meEstadoMenu == 1">Activo</td>
 								<td *ngIf="menuTabla.meEstadoMenu == 0">Inactivo</td>
 							</tr>

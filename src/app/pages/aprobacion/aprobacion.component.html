@@ -13,8 +13,8 @@
 							<div class="content">
 								<div class="form-group">
 									<label for="idMes">Area: </label> <select class="form-control"
-										[(ngModel)]="areaSeleccion.cpIdCatalogo"
-										name="idAreaSeleccion" #idCentroCosto="ngModel">
+										[(ngModel)]="areaSeleccion.cpIdCatalogo" name="idAreaSeleccion"
+										#idCentroCosto="ngModel">
 										<option *ngFor="let catalogo of lstCatalogoArea"
 											[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
 									</select>
@@ -22,8 +22,7 @@
 								</div>
 							</div>
 						</div>
-						<a (click)="cargarFacturasPendientes()" 
-							class="btn btn-fill btn-warning">Buscar</a>
+						<a (click)="cargarFacturasPendientes()" class="btn btn-fill btn-warning">Buscar</a>
 					</div>
 				</div>
 				<br />
@@ -39,7 +38,8 @@
 								<th scope="col" style="text-align: center;">Valor Presupuesto</th>
 								<th scope="col" style="text-align: center;">Factura</th>
 								<th scope="col" style="text-align: center;">Registrador</th>
-								<th scope="col" style="text-align: center;">Seleccionar</th>
+								<th scope="col" style="text-align: center;">Aprobar</th>
+								<th scope="col" style="text-align: center;">Rechazar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -50,11 +50,25 @@
 								<td>{{ factura.dpComentario }}</td>
 								<td>{{ factura.dpIdCabecera.cpIdCuentaContable.cpCodigoCatalogo }}</td>
 								<td align="right">{{ factura.dpValorPresupuesto | currency }}</td>
-								<td align="center"><a
-									(click)="verFactura(factura.dpIdDetalle)">Ver Factura</a></td>
+								<td align="center"><a (click)="verFactura(factura.dpIdDetalle)">Ver Factura</a></td>
 								<td align="center">{{ factura.usIdUsuario.usDescripcionUsuario }}</td>
-								<td align="center"><input type="checkbox"
-									(change)="agregarFactura($event, factura, i)"></td>
+								<td align="center"><input type="checkbox" (change)="agregarFactura($event, factura, i)">
+								</td>
+								<td align="center">
+									<p-dialog header="Ingrese el motivo del rechazo de la factura"
+										[(visible)]="display">
+										<div class="content">
+											<textarea type="text" class="form-control"
+													[(ngModel)]="factura.dpComentarioRechazo" name="comentario"
+													#comentario="ngModel" maxlength="200"></textarea>
+										</div>
+										<p-footer>
+											<a (click)="rechazarFactura(factura.dpComentarioRechazo)" class="btn btn-fill btn-warning">Guardar</a>
+										</p-footer>
+									</p-dialog>
+									<a (click)="showDialog(factura.dpIdDetalle)"><img src="./assets/img/pulgarAbajo.png" width="20"
+											height="20" alt=""></a>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -63,13 +77,13 @@
 						<a (click)="aprobarFacturas()" class="btn btn-fill btn-warning">Aprobar
 							facturas marcadas</a>
 					</div>
-					<br />					
+					<br />
 				</div>
 				<div class="row" *ngIf="flagMensajePendientes">
-						<p class="category">No existen facturas pendientes para su
-							aprobaci&oacute;n</p>
-					</div>
-					<br />
+					<p class="category">No existen facturas pendientes para su
+						aprobaci&oacute;n</p>
+				</div>
+				<br />
 			</div>
 		</div>
 	</div>

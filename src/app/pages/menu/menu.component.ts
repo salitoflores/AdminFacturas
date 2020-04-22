@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Menu } from '../../shared/model/menu';
 import { MenuService } from '../../services/menu.service';
 import { UsuarioService } from '../../services/usuario.service';
+import swal from 'sweetalert';
 
 @Component( {
     selector: 'bi-menu',

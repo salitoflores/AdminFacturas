@@ -14,7 +14,7 @@ export interface DetallePresupuesto {
     idMes?: number;
     cpMes?: Catalogo;
     dpNumeroFactura?: string;
-    dpFechaRegistro?: string;
+    dpFechaRegistro?: Date;
     dpComentario?: string;
     dpSubtotal?: number;
     dpIva?: number;
@@ -30,4 +30,5 @@ export interface DetallePresupuesto {
     dpImgFactura?: any;
     dpImgXmlFactura?: any;
     dpImgAnexos?: any;
+    dpComentarioRechazo?: string;
 }

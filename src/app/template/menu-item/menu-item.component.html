@@ -1,0 +1,20 @@
+<ng-container>
+  <a *ngIf="!menu.children || menu.children.length == 0" [routerLink]="menu.url">
+    <p>{{menu.label}}</p>
+  </a>
+  <a *ngIf="menu.children && menu.children.length > 0" data-toggle="collapse" href="{{'#' + menu.url}}" [attr.aria-expanded]="open" (click)="openMenu($event)">
+    <p>
+      {{menu.label}}
+      <b class="caret"></b>
+    </p>
+  </a>
+  <div *ngIf="menu.children && menu.children.length > 0" id="menu-items" [collapse]="!open" [isAnimated]="true">
+    <ul class="nav">
+      <li *ngFor="let submenu of menu.children" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a [routerLink]="submenu.url">
+          <span class="sidebar-normal">{{submenu.label}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-container>

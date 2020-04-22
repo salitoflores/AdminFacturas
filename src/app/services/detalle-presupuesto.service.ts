@@ -72,5 +72,9 @@ export class DetallePresupuestoService {
         return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/aprobarFacturasAprobador2`, lstFacturasAprobar );
     }
 
+    rechazarFactura( facturaRechazada: DetallePresupuesto ): Observable<any> {
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/rechazarFactura`, facturaRechazada );
+    }
+
 }
 

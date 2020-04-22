@@ -10,6 +10,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { TreeModule } from 'primeng/tree';
 
 import { PickListModule } from 'primeng/picklist';
 
@@ -20,6 +21,8 @@ import { HeaderComponent } from './template/header/header.component';
 import { ContentComponent } from './template/content/content.component';
 import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { FooterComponent } from './template/footer/footer.component';
+import { MenuItemComponent } from './template/menu-item/menu-item.component';
+import { MenuNavComponent } from './template/menu-nav/menu-nav.component';
 import { CabeceraPresupuestoComponent } from './pages/cabecera-presupuesto/cabecera-presupuesto.component';
 import { CatalogoListaComponent } from './pages/catalogo-lista/catalogo-lista.component';
 import { DetallePresupuestoComponent } from './pages/detalle-presupuesto/detalle-presupuesto.component';
@@ -38,6 +41,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { AccionComponent } from './pages/accion/accion.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
+import { DialogModule } from 'primeng/dialog';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -51,6 +55,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ContentComponent,
     SidebarComponent,
     FooterComponent,
+    MenuItemComponent,
+    MenuNavComponent,
     CabeceraPresupuestoComponent,
     CatalogoListaComponent,
     DetallePresupuestoComponent,
@@ -77,7 +83,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CalendarModule,
     GeneralDirectivesModule,
     PickListModule,
-    HttpModule
+    HttpModule,
+    TreeModule,
+    DialogModule
 ],
   providers: [{
       provide: NgbDatepickerI18n,

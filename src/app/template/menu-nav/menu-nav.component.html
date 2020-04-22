@@ -1,0 +1,6 @@
+<ng-container>
+  <li *ngFor="let menu of listMenu" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [bi-menu-item]="menu">
+  </li>
+
+  <li class="active-pro"><a (click)="Logout()"><p>Salir</p></a></li>
+</ng-container>
