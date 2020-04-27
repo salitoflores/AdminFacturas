@@ -5,6 +5,7 @@ import { CabeceraPresupuestoService } from '../../services/cabecera-presupuesto.
 import { Catalogo } from '../../shared/model/catalogo';
 import { CatalogoService } from '../../services/catalogo.service';
 import { DataPresupuestoService } from '../../services/data-presupuesto.service';
+import { obtenerIdArea } from 'src/app/shared/util/seguridad-acceso';
 
 @Component( {
     selector: 'bi-cabecera-presupuesto-lista',
@@ -67,8 +68,13 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
     }
 
     buscarCabeceraPresupuesto() {
-        if (this.area.cpIdCatalogo == null) {
-            this.area.cpIdCatalogo = 0;
+        const idArea = obtenerIdArea();
+        if ( idArea == 1850 ) {
+            this.area.cpIdCatalogo = idArea;
+        } else {
+            if (this.area.cpIdCatalogo == null) {
+                this.area.cpIdCatalogo = 0;
+            }
         }
         if (this.responsable.cpIdCatalogo == null) {
             this.responsable.cpIdCatalogo = 0;

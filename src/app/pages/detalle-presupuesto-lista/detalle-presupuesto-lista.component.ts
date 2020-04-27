@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { saveAs } from 'file-saver';
 import { ImFactura } from '../../shared/model/im-factura';
 import swal from 'sweetalert';
+import { obtenerIdArea } from '../../shared/util/seguridad-acceso';
 
 @Component({
   selector: 'bi-detalle-presupuesto-lista',
@@ -27,7 +28,9 @@ export class DetallePresupuestoListaComponent implements OnInit {
           private detallePresupuestoService: DetallePresupuestoService, private router: Router) { }
 
   ngOnInit() {
-      this.mes = {};
+
+    
+        this.mes = {};
       this.id = this.route.snapshot.queryParams['id'];
 
       this.catalogoService.buscarCatalogos(595).subscribe( res => {
@@ -36,6 +39,7 @@ export class DetallePresupuestoListaComponent implements OnInit {
           err => {
               console.error( err );
           } );
+
   }
 
   buscarDetallePresupuestoFiltroCabeceraMes() {
