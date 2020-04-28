@@ -71,6 +71,7 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
         const idArea = obtenerIdArea();
         if ( idArea == 1850 ) {
             this.area.cpIdCatalogo = idArea;
+            console.log(this.area.cpIdCatalogo);
         } else {
             if (this.area.cpIdCatalogo == null) {
                 this.area.cpIdCatalogo = 0;
