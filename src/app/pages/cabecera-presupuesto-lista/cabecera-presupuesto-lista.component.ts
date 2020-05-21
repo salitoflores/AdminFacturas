@@ -5,7 +5,7 @@ import { CabeceraPresupuestoService } from '../../services/cabecera-presupuesto.
 import { Catalogo } from '../../shared/model/catalogo';
 import { CatalogoService } from '../../services/catalogo.service';
 import { DataPresupuestoService } from '../../services/data-presupuesto.service';
-import { obtenerIdArea } from 'src/app/shared/util/seguridad-acceso';
+import { obtenerIdArea } from '../../shared/util/seguridad-acceso';
 
 @Component( {
     selector: 'bi-cabecera-presupuesto-lista',
