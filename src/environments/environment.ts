@@ -10,7 +10,8 @@ export const environment = {
   urlSrvMenu: '/srvPresupuestoTi-web/rest/menu',
   urlSrvCatalogo: '/srvPresupuestoTi-web/rest/catalogo',
   urlSrvCabeceraPresupuesto: '/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
-  urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto'
+  urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto',
+  utlSrvFechasAutorizadas: '/srvPresupuestoTi-web/rest/fechasAutorizadas'
 }; 
 
 /*

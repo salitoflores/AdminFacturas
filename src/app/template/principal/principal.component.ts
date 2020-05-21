@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FechasAutorizadas } from '../../shared/model/fechas-autorizadas';
+import { FechasAutorizadasService } from '../../services/fechasAutorizadas.service';
 
 @Component({
   selector: 'bi-principal',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  display: boolean;
+  fechasAut: FechasAutorizadas;
+
+  constructor(private fechasAutorizadasService : FechasAutorizadasService ) { }
 
   ngOnInit() {
+    this.display = true;
+    this.fechasAut = {};
+    this.fechasAutorizadasService.recuperarFechas().subscribe( res => {
+      this.fechasAut = res;
+      console.log(this.fechasAut);
+  },
+      err => {
+          console.error( err );
+      } );
   }
 
 }

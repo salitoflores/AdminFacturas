@@ -24,6 +24,7 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
     cuentaContable: Catalogo;
     responsable: Catalogo;
     area: Catalogo;
+    display: boolean;
 
     constructor( private router: Router, private cabeceraPresupuestoService: CabeceraPresupuestoService,
             private catalogoService: CatalogoService, private dataPresupuestoService: DataPresupuestoService ) { }
@@ -38,6 +39,7 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
         this.responsable = {};
         this.area = {};
         this.tipoGasto = {};
+        this.display = true;
 
         // tipo de gasto opex - capex
         this.catalogoService.buscarCatalogos(408).subscribe( res => {

@@ -1,13 +1,26 @@
-
 <div class="wrapper">
-	<div class="sidebar" data-background-color="black" data-active-color="warning">
+    <div class="sidebar" data-background-color="black" data-active-color="warning">
         <bi-sidebar></bi-sidebar>
     </div>
     <div class="main-panel">
         <bi-header></bi-header>
         <div class="content">
-            <router-outlet></router-outlet>
+            <router-outlet>
+                
+            </router-outlet>
         </div>
         <bi-footer></bi-footer>
     </div>
 </div>
+
+<p-dialog header="Aviso Importante !" [(visible)]="display" [modal]="true" [responsive]="true"
+                    [width]="500" [closable]="false">
+                    <span>
+                        <p>Las fechas autorizadas para registro/aprobación de facturas son desde
+                            {{ fechasAut.faFechaInicio | date:'dd/MM/yyyy' }} al
+                            {{ fechasAut.faFechaFin | date:'dd/MM/yyyy' }}</p>
+                    </span>
+                    <p-footer>
+                        <button type="button" pButton icon="pi pi-check" (click)="display=false" label="OK"></button>
+                    </p-footer>
+                </p-dialog>

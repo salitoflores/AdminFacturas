@@ -6,6 +6,7 @@ import {CalendarModule} from 'primeng/calendar';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { BlockUIModule } from 'ng-block-ui';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -42,6 +43,8 @@ import { AccionComponent } from './pages/accion/accion.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
 import { DialogModule } from 'primeng/dialog';
+import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -71,7 +74,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MenuComponent,
     AccionComponent,
     AprobacionComponent,
-    ReporteEstadoFacturasComponent],
+    ReporteEstadoFacturasComponent,
+    GenerarArchivoCIComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -85,7 +89,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PickListModule,
     HttpModule,
     TreeModule,
-    DialogModule
+    DialogModule,
+    BlockUIModule.forRoot()
 ],
   providers: [{
       provide: NgbDatepickerI18n,

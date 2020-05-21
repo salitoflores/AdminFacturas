@@ -37,4 +37,8 @@ export class CatalogoService {
         return this.http.get<Catalogo[]>( `${this.URL_SRV_CATALOGO}/secure/listarTipoCatalogo` );
     }
 
+    buscarMesFechaActual(): Observable<any> {
+        return this.http.get<Catalogo>( `${this.URL_SRV_CATALOGO}/secure/buscarMesFechaActual/` );
+    }
+
 }

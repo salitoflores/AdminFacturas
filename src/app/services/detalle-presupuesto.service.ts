@@ -4,6 +4,7 @@ import { DetallePresupuesto } from '../shared/model/detalle-presupuesto';
 import { Observable } from 'rxjs';
 import { ImFactura } from '../shared/model/im-factura';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Catalogo } from '../shared/model/catalogo';
 
 @Injectable( {
     providedIn: 'root'
@@ -74,6 +75,10 @@ export class DetallePresupuestoService {
 
     rechazarFactura( facturaRechazada: DetallePresupuesto ): Observable<any> {
         return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/rechazarFactura`, facturaRechazada );
+    }
+
+    generarArchivoCI( idArea: number, idMes: number, mes: String): Observable<any> {
+        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/generarArchivoCI/${idArea}/${idMes}/${mes}`, { responseType: 'blob' } );
     }
 
 }

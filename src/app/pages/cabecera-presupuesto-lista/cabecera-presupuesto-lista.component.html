@@ -8,24 +8,20 @@
 			</div>
 			<div class="content">
 				<div class="row">
-					<form
-						(submit)="formDetallePresupuestoLista.form.valid && buscarCabeceraPresupuesto()"
+					<form (submit)="formDetallePresupuestoLista.form.valid && buscarCabeceraPresupuesto()"
 						#formDetallePresupuestoLista="ngForm" novalidate>
 						<div class="col-md-3">
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idTipoGasto">Tipo Gasto: *</label> <select
-											class="form-control"
-											[(ngModel)]="tipoGasto.cpIdCatalogo"
-											name="idTipoGasto" #idTipoGasto="ngModel" (change)=cargarCuentas() required>
+										<label for="idTipoGasto">Tipo Gasto: *</label> <select class="form-control"
+											[(ngModel)]="tipoGasto.cpIdCatalogo" name="idTipoGasto"
+											#idTipoGasto="ngModel" (change)=cargarCuentas() required>
 											<option value="">Seleccione...</option>
-											<option
-												*ngFor="let catalogo of lstCodigoCatalogoTipoGasto"
+											<option *ngFor="let catalogo of lstCodigoCatalogoTipoGasto"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}} </option>
 										</select>
-										<bi-errors [control]="idTipoGasto"
-											ngClass="text-danger"></bi-errors>
+										<bi-errors [control]="idTipoGasto" ngClass="text-danger"></bi-errors>
 									</div>
 								</div>
 							</div>
@@ -35,17 +31,14 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="idCuentaContable">Cuenta Contable: *</label> <select
-											class="form-control"
-											[(ngModel)]="cuentaContable.cpIdCatalogo"
+											class="form-control" [(ngModel)]="cuentaContable.cpIdCatalogo"
 											name="idCuentaContable" #idCuentaContable="ngModel" required>
 											<option value="">Seleccione...</option>
-											<option
-												*ngFor="let catalogo of lstCodigoCatalogoCuentaContable"
+											<option *ngFor="let catalogo of lstCodigoCatalogoCuentaContable"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}
 												- {{catalogo.cpCampo3}}</option>
 										</select>
-										<bi-errors [control]="idCuentaContable"
-											ngClass="text-danger"></bi-errors>
+										<bi-errors [control]="idCuentaContable" ngClass="text-danger"></bi-errors>
 									</div>
 								</div>
 							</div>
@@ -54,9 +47,8 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idArea">Area:</label> <select
-											class="form-control" [(ngModel)]="area.cpIdCatalogo"
-											name="idArea" #idArea="ngModel" >
+										<label for="idArea">Area:</label> <select class="form-control"
+											[(ngModel)]="area.cpIdCatalogo" name="idArea" #idArea="ngModel">
 											<option value="">Seleccione...</option>
 											<option *ngFor="let catalogo of lstCodigoCatalogoArea"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
@@ -70,9 +62,9 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idResponsable">Responsable:</label> <select
-											class="form-control" [(ngModel)]="responsable.cpIdCatalogo"
-											name="idResponsable" #idResponsable="ngModel" >
+										<label for="idResponsable">Responsable:</label> <select class="form-control"
+											[(ngModel)]="responsable.cpIdCatalogo" name="idResponsable"
+											#idResponsable="ngModel">
 											<option value="">Seleccione...</option>
 											<option *ngFor="let catalogo of lstCodigoCatalogoResponsable"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
@@ -86,9 +78,9 @@
 					</form>
 				</div>
 			</div>
-			<div class="content" >
+			<div class="content">
 				<div class="row">
-					<table class="table table-bordered" >
+					<table class="table table-bordered">
 						<thead>
 							<tr>
 								<th scope="col" style="text-align:center;">Registrar Facturas</th>
@@ -106,31 +98,29 @@
 						</thead>
 						<tbody>
 							<tr *ngFor="let cabeceraPresupuesto of lstCabeceraPresupuesto">
-								<td  style="text-align:center;"><a
-									(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
-										src="./assets/img/boton-de-agregar.png" width="20"
-										height="20" alt=""></a></td>
-										<td  style="text-align:center;"><a
-									(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
-										src="./assets/img/boton-de-agregar.png" width="20"
-										height="20" alt=""></a></td>
-								<td  style="text-align:center;"><a
-									(click)="modificarCabecera(cabeceraPresupuesto.cpIdCabecera)"><img
-										src="./assets/img/editar.png" width="20" height="20"
-										alt=""></a></td>
-										<td  style="text-align:center;"><a
-									(click)="consultarDetalles(cabeceraPresupuesto.cpIdCabecera)"><img
-										src="./assets/img/buscar.png" width="20" height="20"
-										alt=""></a></td>
+								<td style="text-align:center;"><a
+										(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
+											src="./assets/img/boton-de-agregar.png" width="20" height="20" alt=""></a>
+								</td>
+								<td style="text-align:center;"><a
+										(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
+											src="./assets/img/boton-de-agregar.png" width="20" height="20" alt=""></a>
+								</td>
+								<td style="text-align:center;"><a
+										(click)="modificarCabecera(cabeceraPresupuesto.cpIdCabecera)"><img
+											src="./assets/img/editar.png" width="20" height="20" alt=""></a></td>
+								<td style="text-align:center;"><a
+										(click)="consultarDetalles(cabeceraPresupuesto.cpIdCabecera)"><img
+											src="./assets/img/buscar.png" width="20" height="20" alt=""></a></td>
 								<td>{{cabeceraPresupuesto.cpProposito}}</td>
 								<td>{{cabeceraPresupuesto.cpDetalles}}</td>
 								<td style="text-align:right;">{{cabeceraPresupuesto.cpPresupuestoAnioActual |
 									currency}}</td>
-								<td  style="text-align:right;">{{cabeceraPresupuesto.valorCancelado |
+								<td style="text-align:right;">{{cabeceraPresupuesto.valorCancelado |
 									currency}}</td>
-								<td  style="text-align:right;">{{cabeceraPresupuesto.diferencia |
+								<td style="text-align:right;">{{cabeceraPresupuesto.diferencia |
 									currency}}</td>
-									<td>{{cabeceraPresupuesto.cpIdCentroCosto.cpCodigoCatalogo}}</td>
+								<td>{{cabeceraPresupuesto.cpIdCentroCosto.cpCodigoCatalogo}}</td>
 								<td>{{cabeceraPresupuesto.cpIdServicio.cpCodigoCatalogo}}</td>
 							</tr>
 						</tbody>

@@ -17,6 +17,7 @@ import { AccionComponent } from './pages/accion/accion.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
+import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
 
 const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -33,6 +34,7 @@ const ROUTES: Routes = [
             { path: 'accion', component: AccionComponent },
             { path: 'menu', component: MenuComponent },
             { path: 'aprobacion', component: AprobacionComponent },
+            { path: 'generar-archivo-ci', component: GenerarArchivoCIComponent },
             { path: 'cabecera-presupuesto', component: CabeceraPresupuestoComponent },
             { path: 'cabecera-presupuesto-lista', component: CabeceraPresupuestoListaComponent },
             { path: 'detalle-presupuesto', component: DetallePresupuestoComponent },

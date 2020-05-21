@@ -25,6 +25,7 @@
     "bootstrap": "4.2.1",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.2",
+    "ng-block-ui": "^2.1.8",
     "ngx-perfect-scrollbar": "^8.0.0",
     "ngx-toastr": "^10.1.0",
     "primeicons": "^2.0.0",
