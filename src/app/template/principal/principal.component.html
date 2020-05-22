@@ -16,9 +16,9 @@
 <p-dialog header="Aviso Importante !" [(visible)]="display" [modal]="true" [responsive]="true"
                     [width]="500" [closable]="false">
                     <span>
-                        <p>Las fechas autorizadas para registro/aprobación de facturas son desde
-                            {{ fechasAut.faFechaInicio | date:'dd/MM/yyyy' }} al
-                            {{ fechasAut.faFechaFin | date:'dd/MM/yyyy' }}</p>
+                        <p>Las fechas autorizadas para registro/aprobación de facturas son:</p><br>
+                        <p><strong>Primer Corte:</strong> {{ fechasAut.faFechaInicio | date:'dd/MM/yyyy' }}</p>
+                        <p><strong>Segundo Corte:</strong>  {{ fechasAut.faFechaFin | date:'dd/MM/yyyy' }}</p>
                     </span>
                     <p-footer>
                         <button type="button" pButton icon="pi pi-check" (click)="display=false" label="OK"></button>
