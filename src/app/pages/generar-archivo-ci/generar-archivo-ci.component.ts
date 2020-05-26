@@ -34,8 +34,11 @@ export class GenerarArchivoCIComponent implements OnInit {
 
   generarArchivo() {
     this.blockUI.start("Generando archivo...");
-    const idArea = obtenerIdArea();
+    let idArea = obtenerIdArea();
     console.log("Area: " + idArea);
+    if (idArea == undefined) {
+      idArea = 0;
+    }
     this.detalleService.generarArchivoCI(idArea, this.mesCatalogo.cpIdCatalogo, this.mesCatalogo.cpCodigoCatalogo.substring(0, 2)).subscribe(
       data => {
         console.log(data);
