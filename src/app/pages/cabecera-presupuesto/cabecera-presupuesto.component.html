@@ -18,7 +18,7 @@
 
 									<div class="form-group">
 										<label for="idAnio">A&ntilde;o: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdAnio.cpIdCatalogo"
 											name="idAnio" #idAnio="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoAnio"
@@ -28,7 +28,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idCuentaContable">Cuenta Contable: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdCuentaContable.cpIdCatalogo"
 											name="idCuentaContable" #idCuentaContable="ngModel" required>
 											<option
@@ -40,7 +40,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idArea">&Aacute;rea: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdArea.cpIdCatalogo"
 											name="idArea" #idArea="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoArea"
@@ -50,7 +50,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idCentroCosto">Centro de Costo: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdCentroCosto.cpIdCatalogo"
 											name="idCentroCosto" #idCentroCosto="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoCentroCosto"
@@ -60,7 +60,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idServicio">Servicio: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdServicio.cpIdCatalogo"
 											name="idServicio" #idServicio="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoServicio"
@@ -70,7 +70,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idUsuarioResponsable">Responsable: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdUsuarioResponsable.cpIdCatalogo"
 											name="idUsuarioResponsable" #idUsuarioResponsable="ngModel"
 											required>
@@ -90,14 +90,14 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="proposito">Prop&oacute;sito</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpProposito"
 											name="proposito" #proposito="ngModel"></textarea>
 										<bi-errors [control]="proposito" ngClass="text-danger"></bi-errors>
 									</div>
 									<div class="form-group">
 										<label for="detalles">Detalle</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpDetalles" name="detalles"
 											#detalles="ngModel"></textarea>
 										<bi-errors [control]="detalles" ngClass="text-danger"></bi-errors>
@@ -105,7 +105,7 @@
 									<div class="form-group">
 										<label for="presupuestoAnioAnterior">Presupuesto
 											A&ntilde;o Anterior: *</label> <input type="text"
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpPresupuestoAnioAnterior"
 											name="presupuestoAnioAnterior"
 											#presupuestoAnioAnterior="ngModel" required>
@@ -115,7 +115,7 @@
 									<div class="form-group">
 										<label for="realPagadoAnioAnterior">Real Pagado
 											A&ntilde;o Anterior: *</label> <input type="text"
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpPresupuestoPagadoAnioAnterior"
 											name="realPagadoAnioAnterior"
 											#realPagadoAnioAnterior="ngModel" required>
@@ -124,7 +124,7 @@
 									</div>
 									<div class="form-group">
 										<label for="presupuestoActual">Presupuesto Actual: *</label> <input
-											type="text" class="form-control"
+											type="text" class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpPresupuestoAnioActual"
 											name="presupuestoActual" #presupuestoActual="ngModel"
 											required readonly>
@@ -133,7 +133,7 @@
 									</div>
 									<div class="form-group">
 										<label for="baseCero">Base Cero: *</label> <input type="text"
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpBaseCero" name="baseCero"
 											#baseCero="ngModel" required (change)=sumar()>
 										<bi-errors [control]="baseCero" ngClass="text-danger"></bi-errors>
@@ -148,14 +148,14 @@
 									<div class="form-group">
 										<div class="form-group">
 											<label for="crecimiento">Crecimiento: *</label> <input
-												type="text" class="form-control"
+												type="text" class="form-control border-input"
 												[(ngModel)]="cabeceraPresupuesto.cpCrecimiento"
 												name="crecimiento" #crecimiento="ngModel" required
 												(change)=sumar()>
 											<bi-errors [control]="crecimiento" ngClass="text-danger"></bi-errors>
 										</div>
 										<label for="idTopologia">Tipolog&iacute;a: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdTopologia.cpIdCatalogo"
 											name="idTopologia" #idTopologia="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoTipologia"
@@ -165,7 +165,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idTipoGasto">Tipo Gasto: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdTipoGasto.cpIdCatalogo"
 											name="idTipoGasto" #idTipoGasto="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoTipoGasto"
@@ -175,7 +175,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idEstado">Estado: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdEstado.cpIdCatalogo" name="idEstado"
 											#idEstado="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoEstado"
@@ -185,7 +185,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idTipoEjecucion">Tipo Ejecuci&oacute;n: *</label>
-										<select class="form-control"
+										<select class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdTipoEjecucion.cpIdCatalogo"
 											name="idTipoEjecucion" #idTipoEjecucion="ngModel">
 											<option
@@ -196,7 +196,7 @@
 									</div>
 									<div class="form-group">
 										<label for="idFuncion">Funci&oacute;n: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="cabeceraPresupuesto.cpIdFuncion.cpIdCatalogo" name="idFuncion"
 											#idFuncion="ngModel">
 											<option *ngFor="let catalogo of lstCodigoCatalogoFuncion"

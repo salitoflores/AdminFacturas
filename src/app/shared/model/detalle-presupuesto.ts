@@ -31,4 +31,5 @@ export interface DetallePresupuesto {
     dpImgXmlFactura?: any;
     dpImgAnexos?: any;
     dpComentarioRechazo?: string;
+    dpTipoDocumento?: number;
 }

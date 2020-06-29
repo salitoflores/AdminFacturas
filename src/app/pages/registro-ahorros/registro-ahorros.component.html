@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="card col-md-12">
+			<div class="header">
+				<h4 class="title">Registro de Ahorro</h4>
+				<p class="category">Ingresar la informacion correspondiente al
+					ahorro para el Presupuesto Seleccionado</p>
+			</div>
+			<div class="content">
+				<div class="row">
+					<form (submit)="formRegistroAhorros.valid && enviarDatosAhorro()"
+						#formRegistroAhorros="ngForm" novalidate>
+						<div class="content">
+							<div class="row">
+								<div class="card-deck col-md-4">
+									<div class="card">
+										<div class="content">
+											<div class="form-group">
+												<label for="idArea">Mes: *</label> <select class="form-control border-input"
+													[(ngModel)]="detallePresupuesto.idMes" name="idMes" #idMes="ngModel"
+													required>
+													<option *ngFor="let catalogo of lstCodigoCatalogoMes"
+														[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}
+													</option>
+												</select>
+												<bi-errors [control]="idMes" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="comentario">Comentario:</label>
+												<textarea type="text" class="form-control border-input"
+													[(ngModel)]="detallePresupuesto.dpComentario" name="comentario"
+													#comentario="ngModel" maxlength="254"></textarea>
+												<bi-errors [control]="comentario" ngClass="text-danger"></bi-errors>
+											</div>
+											<div class="form-group">
+												<label for="total">Total: *</label> <input type="number"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpSubtotal"
+													name="subtotal" #subtotal="ngModel" required >
+												<bi-errors [control]="total" ngClass="text-danger"></bi-errors>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+							<div class="row">
+								<div class="card-deck col-md-4">
+									<div class="content">
+										<div class="btn-group">
+											<button type="submit" class="btn btn-fill btn-warning">Guardar</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

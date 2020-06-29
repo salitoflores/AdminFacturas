@@ -38,4 +38,16 @@ export interface ReporteConsumoCuenta {
     proyeccionDiciembre?: number;
     gastadoDiciembre?: number;
     diferenciaDiciembre?: number;
+    ahorroEnero?: number;
+    ahorroFebrero?: number;
+    ahorroMarzo?: number;
+    ahorroAbril?: number;
+    ahorroMayo?: number;
+    ahorroJunio?: number;
+    ahorroJulio?: number;
+    ahorroAgosto?: number;
+    ahorroSeptiembre?: number;
+    ahorroOctubre?: number;
+    ahorroNoviembre?: number;
+    ahorroDiciembre?: number;
 }

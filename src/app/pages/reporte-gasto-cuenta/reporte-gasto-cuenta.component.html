@@ -7,108 +7,194 @@
 			</div>
 			<div class="content">
 				<div class="row">
-				<div class="ps" style="position: relative;height: 600px;" [perfectScrollbar]="config">
-					<table class="table table-bordered" *ngIf="lstReporteConsumoCuenta.length > 0">
-						<thead>
-							<tr>
-								<th scope="rowgroup" rowspan="2">Cuenta Contable</th>								
-								<th scope="rowgroup" rowspan="2">$ Asignado</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Enero</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Febrero</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Marzo</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Abril</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Mayo</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Junio</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Julio</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Agosto</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Septiembre</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Octubre</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Noviembre</th>
-								<th colspan="3" scope="colgroup" style="text-align:center;">Diciembre</th>
-							</tr>
-							<tr>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-								<th scope="col">Proyeccion</th>
-								<th scope="col">Gastado</th>
-								<th scope="col">Diferencia</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let lista of lstReporteConsumoCuenta">
-								<td>{{lista.cuentaContable}}</td>
-								<td style="text-align:right;">{{lista.presupuestoAsignado | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionEnero | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoEnero | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaEnero | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionFebrero | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoFebrero | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaFebrero | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionMarzo | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoMarzo | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaMarzo | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionAbril | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoAbril | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaAbril | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionMayo | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoMayo | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaMayo | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionJunio | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoJunio | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaJunio | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionJulio | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoJulio | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaJulio | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionAgosto | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoAgosto | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaAgosto | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionSeptiembre | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoSeptiembre | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaSeptiembre | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionOctubre | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoOctubre | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaOctubre | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionNoviembre | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoNoviembre | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaNoviembre | currency}}</td>
-								<td style="text-align:right;">{{lista.proyeccionDiciembre | currency}}</td>
-								<td style="text-align:right;">{{lista.gastadoDiciembre | currency}}</td>
-								<td style="text-align:right;">{{lista.diferenciaDiciembre | currency}}</td>
-							</tr>
-						</tbody>
-					</table>
+					<form (submit)="formReporteGastoCuenta.form.valid && buscar()"
+						#formReporteGastoCuenta="ngForm" novalidate>
+						<div class="col-md-4">
+							<div class="card">
+								<div class="content">
+									<div class="form-group">
+										<label for="idTipoGasto">Tipo Gasto: *</label> <select
+											class="form-control border-input" [(ngModel)]="tipoGasto.cpIdCatalogo"
+											name="idTipoGasto" #idTipoGasto="ngModel" required>
+											<option value="">Seleccione...</option>
+											<option *ngFor="let catalogo of lstCodigoCatalogoTipoGasto"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}} </option>
+										</select>
+										<bi-errors [control]="idTipoGasto" ngClass="text-danger"></bi-errors>
+									</div>
+									<button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+								</div>
+								
+							</div>
+						</div>
+						
+					</form>
 				</div>
+			</div>
+			<div class="content">
+				<div class="row">
+					<div class="ps" style="position: relative;height: 600px;" [perfectScrollbar]="config">
+						<table class="table table-bordered" *ngIf="lstReporteConsumoCuenta.length > 0">
+							<thead>
+								<tr>
+									<th scope="rowgroup" rowspan="2">Cuenta Contable</th>
+									<th scope="rowgroup" rowspan="2">$ Asignado</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Enero</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Febrero</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Marzo</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Abril</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Mayo</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Junio</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Julio</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Agosto</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Septiembre</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Octubre</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Noviembre</th>
+									<th colspan="5" scope="colgroup" style="text-align:center;">Diciembre</th>
+								</tr>
+								<tr>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+									<th scope="col" style="text-align:center;">Proyeccion</th>
+									<th scope="col" style="text-align:center;">Gastado</th>
+									<th scope="col" style="text-align:center;">Diferencia</th>
+									<th scope="col" style="text-align:center;">Ahorro</th>
+									<th scope="col" style="text-align:center;">Prov acumulada</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let lista of lstReporteConsumoCuenta">
+									<td>{{lista.cuentaContable}}</td>
+									<td style="text-align:right;">{{lista.presupuestoAsignado | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionEnero | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoEnero | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaEnero | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroEnero | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaEnero | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionFebrero | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoFebrero | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaFebrero | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroFebrero | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaFebrero | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionMarzo | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoMarzo | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaMarzo | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroMarzo | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaMarzo | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionAbril | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoAbril | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaAbril | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroAbril | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaAbril | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionMayo | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoMayo | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaMayo | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroMayo | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaMayo | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionJunio | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoJunio | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaJunio | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroJunio | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaJunio | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionJulio | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoJulio | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaJulio | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroJulio | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaJulio | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionAgosto | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoAgosto | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaAgosto | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroAgosto | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaAgosto | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionSeptiembre | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoSeptiembre | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaSeptiembre | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroSeptiembre | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaSeptiembre | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionOctubre | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoOctubre | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaOctubre | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroOctubre | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaOctubre | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionNoviembre | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoNoviembre | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaNoviembre | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroNoviembre | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaNoviembre | currency}}</td>
+
+									<td style="text-align:right;">{{lista.proyeccionDiciembre | currency}}</td>
+									<td style="text-align:right;">{{lista.gastadoDiciembre | currency}}</td>
+									<td style="text-align:right;">{{lista.diferenciaDiciembre | currency}}</td>
+									<td style="text-align:right;">{{lista.ahorroDiciembre | currency}}</td>
+									<td style="text-align:right;">{{lista.provicionAcumuladaDiciembre | currency}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

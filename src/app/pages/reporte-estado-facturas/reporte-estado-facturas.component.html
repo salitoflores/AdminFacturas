@@ -13,7 +13,7 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idMes">Mes: *</label> <select class="form-control"
+										<label for="idMes">Mes: *</label> <select class="form-control border-input"
 											[(ngModel)]="mes.cpIdCatalogo" name="idMes" #idMes="ngModel" required>
 											<option *ngFor="let catalogo of lstCodigoCatalogoMes"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
@@ -22,7 +22,7 @@
 									</div>
 
 									<div class="form-group">
-										<label for="idUsuario">Usuario: *</label> <select class="form-control"
+										<label for="idUsuario">Usuario: *</label> <select class="form-control border-input"
 											[(ngModel)]="usuarioFiltro.usIdUsuario" name="idUsuario"
 											#idUsuario="ngModel" required>
 											<option *ngFor="let usu of lstUsuariosRegistrados"

@@ -398,14 +398,24 @@ hr {
 }
 .sidebar .nav,
 .off-canvas-sidebar .nav {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .sidebar .nav li > a,
 .off-canvas-sidebar .nav li > a {
-  margin: 10px 0px;
+  margin: 0px 0px;
   padding-left: 25px;
   padding-right: 25px;
   opacity: .7;
+}
+.sidebar .nav > li.active-pro{
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+.sidebar .nav > li.active-pro a{
+  background: rgba(255, 255, 255, 0.14);
+  opacity: 1;
+  color: #FFFFFF;
 }
 .sidebar .nav li:hover > a,
 .off-canvas-sidebar .nav li:hover > a {

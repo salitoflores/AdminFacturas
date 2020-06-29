@@ -16,7 +16,7 @@
 
 									<div class="form-group">
 										<label for="idTipoCatalogo">Cat&aacute;logo: *</label> <select
-											class="form-control" [(ngModel)]="catalogo.cpCampo11"
+											class="form-control border-input" [(ngModel)]="catalogo.cpCampo11"
 											name="cpCampo11" #cpCampo11="ngModel" required (change)=validarTipoCatalogo()>
 											<option *ngFor="let catalogo of lstCatalogoPadre"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
@@ -26,7 +26,7 @@
 									
 									<div class="form-group" *ngIf="flagTipoGasto">
 										<label for="idTipoCatalogo">Tipo Gasto: *</label> <select
-											class="form-control" [(ngModel)]="catalogo.cpCampo10"
+											class="form-control border-input" [(ngModel)]="catalogo.cpCampo10"
 											name="cpCampo10" #cpCampo11="ngModel" required >
 											<option *ngFor="let catalogo of lstCatalogoTipoGasto"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
@@ -38,7 +38,7 @@
 									
 									<div class="form-group">
 										<label for="subcatalogo">Sub-cat&aacute;logo: * </label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="catalogo.cpCodigoCatalogo" name="cpCodigoCatalogo"
 											#cpCodigoCatalogo="ngModel" required></textarea>
 										<bi-errors [control]="cpCodigoCatalogo" ngClass="text-danger"></bi-errors>
@@ -46,7 +46,7 @@
 
 									<div class="form-group">
 										<label for="detalleAdicional">Detalle adicional: </label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="catalogo.cpCampo3" name="cpCampo3"
 											#cpCampo3="ngModel"></textarea>
 										<bi-errors [control]="cpCampo3"

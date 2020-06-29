@@ -18,6 +18,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
 import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
+import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
 
 const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -40,7 +41,8 @@ const ROUTES: Routes = [
             { path: 'detalle-presupuesto', component: DetallePresupuestoComponent },
             { path: 'detalle-presupuesto-lista', component: DetallePresupuestoListaComponent },
             { path: 'reporte-gasto-cuenta', component: ReporteGastoCuentaComponent },
-            { path: 'reporte-estado-facturas', component: ReporteEstadoFacturasComponent }
+            { path: 'reporte-estado-facturas', component: ReporteEstadoFacturasComponent },
+            { path: 'registro-ahorros', component: RegistroAhorrosComponent}
       ]}
 ];
 

@@ -44,6 +44,7 @@ import { AprobacionComponent } from './pages/aprobacion/aprobacion.component';
 import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/reporte-estado-facturas.component';
 import { DialogModule } from 'primeng/dialog';
 import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
+import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -75,7 +76,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AccionComponent,
     AprobacionComponent,
     ReporteEstadoFacturasComponent,
-    GenerarArchivoCIComponent],
+    GenerarArchivoCIComponent,
+    RegistroAhorrosComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

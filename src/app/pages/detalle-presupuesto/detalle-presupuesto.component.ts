@@ -209,10 +209,7 @@ export class DetallePresupuestoComponent implements OnInit {
         if (this.imagenPdf === undefined) {
             swal({ title: 'Error!', text: 'No ha cargardo el RIDE.!', icon: 'error' });
         } else {
-            console.log(this.imagenPdf);
-            console.log(this.imagenXml);
-            console.log(this.imagenAnexos);
-            console.log("Antes de guardar" + this.detallePresupuesto);
+            console.log("Antes de guardar" + this.detallePresupuesto.dpTipoDocumento);
             this.detallePresupuestoService.guardarDatosDetallePresupuesto(this.detallePresupuesto, this.imagenPdf, this.imagenXml, this.imagenAnexos).subscribe(
                 res => {
                     swal({ title: 'OK!', text: 'Registro exitoso', icon: 'success' });
@@ -271,6 +268,15 @@ export class DetallePresupuestoComponent implements OnInit {
         if (this.detallePresupuesto.dpFechaRegistro != null) {
             this.detallePresupuesto.dpFechaRegistro = new Date(this.detallePresupuesto.dpFechaRegistro);
         }
+        this.detallePresupuesto.dpComentarioRechazo = '';
+        console.log(this.detallePresupuesto.dpSubtotal);
+        if (this.detallePresupuesto.dpSubtotal >= 0) {
+            this.detallePresupuesto.dpTipoDocumento = 1;
+        } else {
+            this.detallePresupuesto.dpTipoDocumento = 2;
+        }
+        
+        
     }
 
     verFactura( id: number ) {

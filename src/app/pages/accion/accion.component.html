@@ -14,7 +14,7 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="nombreAccion">Acci&oacute;n: *</label> <input
-											type="text" class="form-control"
+											type="text" class="form-control border-input"
 											[(ngModel)]="accion.acNombreAccion" name="nombreAccion"
 											#nombreAccion="ngModel" required>
 										<bi-errors [control]="nombreAccion" ngClass="text-danger"></bi-errors>
@@ -22,7 +22,7 @@
 									<div class="form-group">
 										<label for="descripcionAccion">Descripci&oacute;n de
 											la Acci&oacute;n: *</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="accion.acDescripcionAccion"
 											name="descripcionAccion" #descripcionAccion="ngModel"
 											required></textarea>

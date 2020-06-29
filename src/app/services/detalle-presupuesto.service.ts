@@ -81,5 +81,9 @@ export class DetallePresupuestoService {
         return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/generarArchivoCI/${idArea}/${idMes}/${mes}`, { responseType: 'blob' } );
     }
 
-}
+    guardarDatosAhorro( detallePresupuesto: DetallePresupuesto ): Observable<any> {
+        //console.log('Llega al servicio');
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/crearAhorro`, detallePresupuesto );
+    }
 
+}

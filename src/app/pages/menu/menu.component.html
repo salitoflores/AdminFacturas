@@ -14,14 +14,14 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="nombreMenu">Men&uacute;: *</label> <input
-											type="text" class="form-control"
+											type="text" class="form-control border-input"
 											[(ngModel)]="menu.meNombreMenu" name="nombreMenu"
 											#nombreMenu="ngModel" required>
 										<bi-errors [control]="nombreMenu" ngClass="text-danger"></bi-errors>
                                     </div>                                    
 									<div class="form-group">
 										<label for="urlMenu">Url de Men&uacute;: *</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="menu.meUrlMenu"
 											name="urlMenu" #urlMenu="ngModel"
 											required></textarea>
@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="form-group">
 										<label for="idMenuPadre">Id Men&uacute; Padre:</label> <input
-											type="text" class="form-control"
+											type="text" class="form-control border-input"
 											[(ngModel)]="menu.meIdMenuPadre" name="idMenuPadre"
 											#idMenuPadre="ngModel">
 										<bi-errors [control]="idMenuPadre" ngClass="text-danger"></bi-errors>

@@ -17,7 +17,7 @@
 										<div class="content">
 											<div class="form-group">
 												<label for="idProveedor">Proveedor: *</label> <select
-													class="form-control" [(ngModel)]="detallePresupuesto.idProveedor"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.idProveedor"
 													name="idProveedor" #idProveedor="ngModel" required
 													(change)="validarProveedor()">
 													<option *ngFor="let catalogo of lstCodigoCatalogoProveedor"
@@ -28,7 +28,7 @@
 											</div>
 											<div class="form-group">
 												<label for="idFabricante">Fabricante: *</label> <select
-													class="form-control" [(ngModel)]="detallePresupuesto.idFabricante"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.idFabricante"
 													name="idFabricante" #idFabricante="ngModel" required>
 													<option *ngFor="let catalogo of lstCodigoCatalogoFabricante"
 														[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}
@@ -37,7 +37,7 @@
 												<bi-errors [control]="idFabricante" ngClass="text-danger"></bi-errors>
 											</div>
 											<div class="form-group">
-												<label for="idArea">Mes: *</label> <select class="form-control"
+												<label for="idArea">Mes: *</label> <select class="form-control border-input"
 													[(ngModel)]="detallePresupuesto.idMes" name="idMes" #idMes="ngModel"
 													required>
 													<option *ngFor="let catalogo of lstCodigoCatalogoMes"
@@ -48,7 +48,7 @@
 											</div>
 											<div class="form-group">
 												<label for="numeroFactura">Numero Factura: *</label> <input type="text"
-													class="form-control"
+													class="form-control border-input"
 													[(ngModel)]="detallePresupuesto.dpNumeroFactura"
 													name="numeroFactura" #numeroFactura="ngModel" required>
 												<bi-errors [control]="numeroFactura" ngClass="text-danger"></bi-errors>
@@ -60,7 +60,7 @@
 											</div>
 											<div class="form-group">
 												<label for="comentario">Comentario:</label>
-												<textarea type="text" class="form-control"
+												<textarea type="text" class="form-control border-input"
 													[(ngModel)]="detallePresupuesto.dpComentario" name="comentario"
 													#comentario="ngModel" maxlength="254"></textarea>
 												<bi-errors [control]="comentario" ngClass="text-danger"></bi-errors>
@@ -73,20 +73,20 @@
 										<div class="content">
 											<div class="form-group">
 												<label for="subtotal">Subtotal: *</label> <input type="number"
-													class="form-control" [(ngModel)]="detallePresupuesto.dpSubtotal"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpSubtotal"
 													name="subtotal" #subtotal="ngModel" required
 													(change)="calcularImpuestos()">
 												<bi-errors [control]="subtotal" ngClass="text-danger"></bi-errors>
 											</div>
 											<div class="form-group">
 												<label for="iva">Iva: *</label> <input type="number"
-													class="form-control" [(ngModel)]="detallePresupuesto.dpIva"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpIva"
 													name="iva" #iva="ngModel" (change)="cambioIva()" required>
 												<bi-errors [control]="iva" ngClass="text-danger"></bi-errors>
 											</div>
 											<div class="form-group">
 												<label for="retencion">Retencion: *</label> <input type="number"
-													class="form-control" [(ngModel)]="detallePresupuesto.dpRetencion"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpRetencion"
 													name="retencion" #retencion="ngModel" required readonly>
 												<bi-errors [control]="retencion" ngClass="text-danger"></bi-errors>
 											</div>
@@ -97,13 +97,13 @@
 											</div>
 											<div class="form-group" *ngIf="this.aplicaIce">
 												<label for="ice">ICE: *</label> <input type="number"
-													class="form-control" [(ngModel)]="detallePresupuesto.dpIce"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpIce"
 													(change)="recalcular()" name="ice" #ice="ngModel">
 												<bi-errors [control]="ice" ngClass="text-danger"></bi-errors>
 											</div>
 											<div class="form-group">
 												<label for="isd">ISD: *</label> <input type="number"
-													class="form-control" [(ngModel)]="detallePresupuesto.dpIsd"
+													class="form-control border-input" [(ngModel)]="detallePresupuesto.dpIsd"
 													name="isd" #isd="ngModel" required readonly>
 												<bi-errors [control]="isd" ngClass="text-danger"></bi-errors>
 											</div>
@@ -115,7 +115,7 @@
 										<div class="content">
 											<div class="form-group">
 												<label for="valorTransferencia">Valor Transferencia:
-													*</label> <input type="text" class="form-control"
+													*</label> <input type="text" class="form-control border-input"
 													[(ngModel)]="detallePresupuesto.dpValorTransferencia"
 													name="valorTransferencia" #valorTransferencia="ngModel" required
 													readonly>
@@ -124,7 +124,7 @@
 											</div>
 											<div class="form-group">
 												<label for="valorPresupuesto">Total Presupuesto: *</label> <input
-													type="text" class="form-control"
+													type="text" class="form-control border-input"
 													[(ngModel)]="detallePresupuesto.dpValorPresupuesto"
 													name="valorPresupuesto" #valorPresupuesto="ngModel" required
 													readonly>
@@ -133,7 +133,7 @@
 											</div>
 											<div class="form-group">
 												<label for="totalFactura">Total Factura: </label> <input type="text"
-													class="form-control" [(ngModel)]="model.dpTotalFactura"
+													class="form-control border-input" [(ngModel)]="model.dpTotalFactura"
 													name="totalFactura" #totalFactura="ngModel" required readonly>
 												<bi-errors [control]="valorPresupuesto" ngClass="text-danger">
 												</bi-errors>
@@ -147,7 +147,7 @@
 													(click)="cambiarFactura(detallePresupuesto.dpIdDetalle)"><img
 														src="./assets/img/editar.png" width="20" height="20" alt=""></a>
 													<input *ngIf="!this.flagFactura" accept="application/pdf"
-														type="file" class="form-control" name="documentoPdf"
+														type="file" class="form-control border-input" name="documentoPdf"
 														(change)="cargarFactura($event.target.files)">
 
 											</div>
@@ -160,7 +160,7 @@
 												(click)="cambiarXml(detallePresupuesto.dpIdDetalle)"><img
 													src="./assets/img/editar.png" width="20" height="20" alt=""></a>
 												<input *ngIf="!this.flagXml" accept="text/xml" type="file"
-													class="form-control" name="documentoXml"
+													class="form-control border-input" name="documentoXml"
 													(change)="cargarXml($event.target.files)">
 
 											</div>
@@ -174,7 +174,7 @@
 													src="./assets/img/editar.png" width="20" height="20" alt=""></a>
 												<input *ngIf="!this.flagAnexos"
 													accept="zip,application/octet-stream,application/zip,application/x-zip,application/x-zip-compressed"
-													type="file" class="form-control" name="anexos"
+													type="file" class="form-control border-input" name="anexos"
 													(change)="cargarAnexos($event.target.files)">
 
 											</div>

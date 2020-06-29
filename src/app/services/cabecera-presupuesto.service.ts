@@ -28,8 +28,8 @@ export class CabeceraPresupuestoService {
         return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/buscarCabeceraFiltros/${idCuentaContable}/${idArea}/${idResponsable}`);
     }
 
-    consultaConsumoPresupuesto(): Observable<any> {
-        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/consultaConsumoPresupuesto`);
+    consultaConsumoPresupuesto( idTipoGasto: number): Observable<any> {
+        return this.http.get<CabeceraPresupuesto[]>( `${this.URL_SRV_CABECERA_PRESUPUESTO}/secure/consultaConsumoPresupuesto/${idTipoGasto}`);
     }
 
 }

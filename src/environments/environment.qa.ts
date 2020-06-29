@@ -7,5 +7,5 @@ export const environment = {
   urlSrvCatalogo: 'http://172.16.72.129:9082/srvPresupuestoTi-web/rest/catalogo',
   urlSrvCabeceraPresupuesto: 'http://172.16.72.129:9082/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
   urlSrvDetallePresupuesto: 'http://172.16.72.129:9082/srvPresupuestoTi-web/rest/detallePresupuesto',
-  utlSrvFechasAutorizadas: 'http://172.16.72.129:9082/srvPresupuestoTi-web/rest/fechasAutorizadas'
+  urlSrvFechasAutorizadas: 'http://172.16.72.129:9082/srvPresupuestoTi-web/rest/fechasAutorizadas'
 };

@@ -5,7 +5,7 @@ import { CabeceraPresupuestoService } from '../../services/cabecera-presupuesto.
 import { Catalogo } from '../../shared/model/catalogo';
 import { CatalogoService } from '../../services/catalogo.service';
 import { DataPresupuestoService } from '../../services/data-presupuesto.service';
-import { obtenerIdArea } from '../../shared/util/seguridad-acceso';
+import { obtenerIdArea, validarAccion } from '../../shared/util/seguridad-acceso';
 
 @Component( {
     selector: 'bi-cabecera-presupuesto-lista',
@@ -24,49 +24,19 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
     cuentaContable: Catalogo;
     responsable: Catalogo;
     area: Catalogo;
-    display: boolean;
+    flagAhorro: boolean;
 
     constructor( private router: Router, private cabeceraPresupuestoService: CabeceraPresupuestoService,
             private catalogoService: CatalogoService, private dataPresupuestoService: DataPresupuestoService ) { }
 
     ngOnInit() {
         if (this.dataPresupuestoService.dato) {
-            this.lstCabeceraPresupuesto = this.dataPresupuestoService.dato;
+            console.log('Dentro del if')
+            this.lstCabeceraPresupuesto = [];
             this.dataPresupuestoService.dato = null;
         }
-
-        this.cuentaContable = {};
-        this.responsable = {};
-        this.area = {};
-        this.tipoGasto = {};
-        this.display = true;
-
-        // tipo de gasto opex - capex
-        this.catalogoService.buscarCatalogos(408).subscribe( res => {
-            this.lstCodigoCatalogoTipoGasto = res;
-        },
-            err => {
-                console.error( err );
-            } );
-        this.catalogoService.buscarCatalogos(405).subscribe( res => {
-            // this.lstCodigoCatalogoCuentaContable = res;
-        },
-            err => {
-                console.error( err );
-            } );
-        this.catalogoService.buscarCatalogos(401).subscribe( res => {
-            this.lstCodigoCatalogoArea = res;
-        },
-            err => {
-                console.error( err );
-            } );
-        this.catalogoService.buscarCatalogos(404).subscribe( res => {
-            this.lstCodigoCatalogoResponsable = res;
-        },
-            err => {
-                console.error( err );
-            } );
-
+        this.inicializarCombos();
+        this.validarAcciones();
     }
 
     buscarCabeceraPresupuesto() {
@@ -103,10 +73,15 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
 
     almacenarData() {
         this.dataPresupuestoService.dato = this.lstCabeceraPresupuesto;
+        
     }
 
     registrarFactura( id: number ) {
         this.router.navigate( ['home/detalle-presupuesto'], { queryParams: { id: id } } );
+    }
+
+    registrarAhorro( id: number ) {
+        this.router.navigate( ['home/registro-ahorros'], { queryParams: { id: id } } );
     }
 
     modificarCabecera( id: number ) {
@@ -115,6 +90,42 @@ export class CabeceraPresupuestoListaComponent implements OnInit {
 
     consultarDetalles( id: number ) {
         this.router.navigate( ['home/detalle-presupuesto-lista'], { queryParams: { id: id } } );
+    }
+
+    inicializarCombos() {
+        this.cuentaContable = {};
+        this.responsable = {};
+        this.area = {};
+        this.tipoGasto = {};
+        this.flagAhorro = false;
+        
+
+        // tipo de gasto opex - capex
+        this.catalogoService.buscarCatalogos(408).subscribe( res => {
+            this.lstCodigoCatalogoTipoGasto = res;
+        },
+            err => {
+                console.error( err );
+            } );
+        
+        this.catalogoService.buscarCatalogos(401).subscribe( res => {
+            this.lstCodigoCatalogoArea = res;
+        },
+            err => {
+                console.error( err );
+            } );
+        this.catalogoService.buscarCatalogos(404).subscribe( res => {
+            this.lstCodigoCatalogoResponsable = res;
+        },
+            err => {
+                console.error( err );
+            } );
+    }
+
+    validarAcciones() {
+        if (validarAccion('REGAHO')) {
+            this.flagAhorro = true;
+        }
     }
 
 }

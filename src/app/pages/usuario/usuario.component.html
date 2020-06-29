@@ -14,20 +14,20 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="nombreUsuario">BIN: *</label> <input type="text"
-											class="form-control" [(ngModel)]="usuario.usNombreUsuario"
+											class="form-control border-input" [(ngModel)]="usuario.usNombreUsuario"
 											name="nombreUsuario" #nombreUsuario="ngModel" required>
 										<bi-errors [control]="nombreUsuario" ngClass="text-danger"></bi-errors>
 									</div>
 									<div class="form-group">
 										<label for="descripcionUsuario">Nombre: *</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="usuario.usDescripcionUsuario" name="descripcionUsuario"
 											#descripcionUsuario="ngModel" required></textarea>
 										<bi-errors [control]="descripcionUsuario" ngClass="text-danger"></bi-errors>
 									</div>
 									<div class="form-group">
 										<label for="idRol">Rol: *</label> <select
-											class="form-control"
+											class="form-control border-input"
 											[(ngModel)]="usuario.idRol"
 											name="idRol" #idRol="ngModel" required>
 											<option *ngFor="let rol of lstRolesActivos"

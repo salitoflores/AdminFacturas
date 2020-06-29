@@ -14,7 +14,7 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idTipoGasto">Tipo Gasto: *</label> <select class="form-control"
+										<label for="idTipoGasto">Tipo Gasto: *</label> <select class="form-control border-input"
 											[(ngModel)]="tipoGasto.cpIdCatalogo" name="idTipoGasto"
 											#idTipoGasto="ngModel" (change)=cargarCuentas() required>
 											<option value="">Seleccione...</option>
@@ -31,7 +31,7 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="idCuentaContable">Cuenta Contable: *</label> <select
-											class="form-control" [(ngModel)]="cuentaContable.cpIdCatalogo"
+											class="form-control border-input" [(ngModel)]="cuentaContable.cpIdCatalogo"
 											name="idCuentaContable" #idCuentaContable="ngModel" required>
 											<option value="">Seleccione...</option>
 											<option *ngFor="let catalogo of lstCodigoCatalogoCuentaContable"
@@ -47,7 +47,7 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idArea">Area:</label> <select class="form-control"
+										<label for="idArea">Area:</label> <select class="form-control border-input"
 											[(ngModel)]="area.cpIdCatalogo" name="idArea" #idArea="ngModel">
 											<option value="">Seleccione...</option>
 											<option *ngFor="let catalogo of lstCodigoCatalogoArea"
@@ -62,7 +62,7 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
-										<label for="idResponsable">Responsable:</label> <select class="form-control"
+										<label for="idResponsable">Responsable:</label> <select class="form-control border-input"
 											[(ngModel)]="responsable.cpIdCatalogo" name="idResponsable"
 											#idResponsable="ngModel">
 											<option value="">Seleccione...</option>
@@ -78,13 +78,13 @@
 					</form>
 				</div>
 			</div>
-			<div class="content">
+			<div class="content" >
 				<div class="row">
-					<table class="table table-bordered">
+					<table class="table table-bordered" *ngIf="lstCabeceraPresupuesto.length > 0">
 						<thead>
 							<tr>
 								<th scope="col" style="text-align:center;">Registrar Facturas</th>
-								<th scope="col" style="text-align:center;">Registrar Ahorro</th>
+								<th scope="col" style="text-align:center;" *ngIf="flagAhorro">Registrar Ahorro</th>
 								<th scope="col" style="text-align:center;">Editar</th>
 								<th scope="col" style="text-align:center;">Ver Facturas</th>
 								<th scope="col" style="text-align:center;">Proposito</th>
@@ -102,8 +102,8 @@
 										(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
 											src="./assets/img/boton-de-agregar.png" width="20" height="20" alt=""></a>
 								</td>
-								<td style="text-align:center;"><a
-										(click)="registrarFactura(cabeceraPresupuesto.cpIdCabecera)"><img
+								<td style="text-align:center;" *ngIf="flagAhorro"><a
+										(click)="registrarAhorro(cabeceraPresupuesto.cpIdCabecera)"><img
 											src="./assets/img/boton-de-agregar.png" width="20" height="20" alt=""></a>
 								</td>
 								<td style="text-align:center;"><a

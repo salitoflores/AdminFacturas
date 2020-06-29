@@ -12,7 +12,7 @@
 						<div class="card">
 							<div class="content">
 								<div class="form-group">
-									<label for="idMes">Area: </label> <select class="form-control"
+									<label for="idMes">Area: </label> <select class="form-control border-input"
 										[(ngModel)]="areaSeleccion.cpIdCatalogo" name="idAreaSeleccion"
 										#idCentroCosto="ngModel">
 										<option *ngFor="let catalogo of lstCatalogoArea"
@@ -58,7 +58,7 @@
 									<p-dialog header="Ingrese el motivo del rechazo de la factura"
 										[(visible)]="display">
 										<div class="content">
-											<textarea type="text" class="form-control"
+											<textarea type="text" class="form-control border-input"
 													[(ngModel)]="factura.dpComentarioRechazo" name="comentario"
 													#comentario="ngModel" maxlength="200"></textarea>
 										</div>

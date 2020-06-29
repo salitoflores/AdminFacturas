@@ -14,14 +14,14 @@
 								<div class="content">
 									<div class="form-group">
 										<label for="nombreRol">Rol: *</label> <input type="text"
-											class="form-control" [(ngModel)]="rol.roNombreRol"
+											class="form-control border-input" [(ngModel)]="rol.roNombreRol"
 											name="nombreRol" #nombreRol="ngModel" required>
 										<bi-errors [control]="nombreRol" ngClass="text-danger"></bi-errors>
 									</div>
 									<div class="form-group">
 										<label for="descripcionRol">Descripci&oacute;n del
 											Rol: *</label>
-										<textarea type="text" class="form-control"
+										<textarea type="text" class="form-control border-input"
 											[(ngModel)]="rol.roDescripcionRol" name="descripcionRol"
 											#descripcionRol="ngModel" required></textarea>
 										<bi-errors [control]="descripcionRol" ngClass="text-danger"></bi-errors>
