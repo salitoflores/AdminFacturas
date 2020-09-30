@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { TreeModule } from 'primeng/tree';
+import {TableModule} from 'primeng/table';
 
 import { PickListModule } from 'primeng/picklist';
 
@@ -45,6 +46,7 @@ import { ReporteEstadoFacturasComponent } from './pages/reporte-estado-facturas/
 import { DialogModule } from 'primeng/dialog';
 import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
 import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
+import { RegistroProveedorComponent } from './pages/registro-proveedor/registro-proveedor.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -77,7 +79,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AprobacionComponent,
     ReporteEstadoFacturasComponent,
     GenerarArchivoCIComponent,
-    RegistroAhorrosComponent],
+    RegistroAhorrosComponent,
+    RegistroProveedorComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -88,6 +91,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NgbModule,
     CalendarModule,
     GeneralDirectivesModule,
+    TableModule,
     PickListModule,
     HttpModule,
     TreeModule,

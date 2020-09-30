@@ -1,0 +1,230 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="card col-md-12" *ngIf="flagListado == true">
+      <div class="header">
+        <h4 class="title">Listado de Proveedores Registrados</h4>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="card">
+            <p-table [value]="lstProveedor" *ngIf="lstProveedor.length > 0" [paginator]="true" [rows]="10"
+              [scrollable]="true">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th scope="col" style="text-align: center; width: 80px;">Acciones</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Raz&oacute;n Social</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Nombre Comercial</th>
+                  <th scope="col" style="text-align: center; width: 150px;">RUC</th>
+                  <th scope="col" style="text-align: center; width: 150px;">Pa&iacute;s</th>
+                  <th scope="col" style="text-align: center; width: 150px;">Tel&eacute;fonos</th>
+                  <th scope="col" style="text-align: center; width: 150px;">&Aacute;rea Responsable</th>
+                  <th scope="col" style="text-align: center; width: 100px;">Criticidad</th>
+                  <th scope="col" style="text-align: center; width: 150px;">Form. Conozca a su Proveedor</th>
+                  <th scope="col" style="text-align: center; width: 100px;">Fecha Inicio</th>
+                  <th scope="col" style="text-align: center; width: 100px;">Fecha Fin</th>
+                  <th scope="col" style="text-align: center; width: 150px;">Cert. Residencia Fiscal</th>
+                  <th scope="col" style="text-align: center; width: 100px;">Fecha Inicio</th>
+                  <th scope="col" style="text-align: center; width: 100px;">Fecha Fin</th>
+                  <th scope="col" style="text-align: center; width: 80px;">Estado</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-prov>
+                <tr>
+                  <td style="text-align: center; width: 80px;"><a (click)="modificarProveedor(prov)"><img
+                        src="./assets/img/editar.png" width="20" height="20" title="Editar"></a>
+                    &nbsp;<a (click)="consultarContratos(prov)"><img src="./assets/img/contratos.png" width="25"
+                        height="25" title="Ver Contratos"></a></td>
+                  <td style="width: 200px;">{{prov.prRazonSocial}}</td>
+                  <td style="width: 200px;">{{prov.prNombreComercial}}</td>
+                  <td style="width: 150px;">{{prov.prRuc}}</td>
+                  <td style="width: 150px;">{{prov.prIdPais.cpCodigoCatalogo}}</td>
+                  <td style="width: 150px;">{{prov.prTelefonos}}</td>
+                  <td style="width: 150px;">{{prov.prIdResponsableArea.cpCodigoCatalogo}}</td>
+                  <td style="width: 100px;">{{prov.prIdCriticidad.cpCodigoCatalogo}}</td>
+                  <td style="width: 150px;"><a (click)="verFormulario(prov.prId)">Visualizar</a></td>
+                  <td style="width: 100px;">{{prov.prFechaInicioFormulario | date:'dd/MM/yyyy'}}</td>
+                  <td style="width: 100px;">{{prov.prFechaFinFormulario | date:'dd/MM/yyyy' }}</td>
+                  <td style="width: 150px;"><a (click)="verCertificado(prov.prId)">Visualizar</a></td>
+                  <td style="width: 100px;">{{prov.prFechaInicioCertificado | date:'dd/MM/yyyy'}}</td>
+                  <td style="width: 100px;">{{prov.prFechaFinCertificado | date:'dd/MM/yyyy'}}</td>
+                  <td style="width: 80px;">{{prov.prEstado}}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <br />
+            <div class="btn-group">
+              <a (click)="nuevoProveedor()" class="btn btn-fill btn-warning">Nuevo Proveedor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-md-12" *ngIf="flagCrear == true">
+      <div class="header">
+        <h4 class="title">Creaci&oacute;n / Actualizaci&oacute;n de Proveedores</h4>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="row">
+            <form (submit)="formRegistroProveedor.form.valid && guardarProveedor()" #formRegistroProveedor="ngForm"
+              novalidate>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="content">
+
+                    <div class="form-group">
+                      <label for="prRazonSocial">Raz&oacute;n Social: * </label>
+                      <input type="text" class="form-control border-input" [(ngModel)]="proveedor.prRazonSocial"
+                        name="razonSocial" #razonSocial="ngModel" required>
+                      <bi-errors [control]="razonSocial" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="prNombreComercial">Nombre Comercial: * </label>
+                      <input type="text" class="form-control border-input" [(ngModel)]="proveedor.prNombreComercial"
+                        name="nombreComercial" #nombreComercial="ngModel" required>
+                      <bi-errors [control]="nombreComercial" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="prRuc">RUC: * </label>
+                      <input type="text" class="form-control border-input" [(ngModel)]="proveedor.prRuc" name="ruc"
+                        #ruc="ngModel" required>
+                      <bi-errors [control]="ruc" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idPais">Pa&iacute;s: *</label> <select class="form-control border-input"
+                        [(ngModel)]="proveedor.idPais" name="idPais" #idPais="ngModel" (change)="verificarPais(idPais.value)" required>
+                        <option *ngFor="let catalogo of lstPaises"  [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idProveedor" ngClass="text-danger"></bi-errors>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="content">
+
+                    <div class="form-group">
+                      <label for="prTelefonos">Tel&eacute;fonos: * </label>
+                      <textarea type="text" class="form-control border-input" [(ngModel)]="proveedor.prTelefonos"
+                        name="telefonos" #telefonos="ngModel" required></textarea>
+                      <bi-errors [control]="telefonos" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idResponsable">&Aacute;rea Responsable: *</label> <select
+                        class="form-control border-input" [(ngModel)]="proveedor.idResponsableArea"
+                        name="idResponsableArea" #idResponsableArea="ngModel" required>
+                        <option *ngFor="let catalogo of lstAreaResponsable" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idResponsableArea" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idCriticidad">Criticidad: *</label> <select class="form-control border-input"
+                        [(ngModel)]="proveedor.idCriticidad" name="idCriticidad" #idCriticidad="ngModel" required>
+                        <option *ngFor="let catalogo of lstCriticidad" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idCriticidad" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group form-check">
+                      <label class="form-check-label" for="estado">Activo:</label>&nbsp;
+                      &nbsp; <input type="checkbox" class="form-check-input"
+                        id="estado" [(ngModel)]="proveedor.prEstado" name="estado">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card" *ngIf="this.flagFormularios">
+                  <div class="content">
+
+                    <div class="form-group">
+                      <label for="formConozcaProveedor">Formulario Conozca a su Proveedor: * </label>
+                      <a *ngIf="this.flagFormulario" (click)="verFormulario(proveedor.prId)"> &nbsp; <img
+                          src="./assets/img/buscar.png" width="20" height="20" alt="">
+                      </a> &nbsp;&nbsp; <a *ngIf="this.flagFormulario" (click)="cambiarFormulario(proveedor.prId)"><img
+                          src="./assets/img/editar.png" width="20" height="20" alt=""></a>
+                      <input *ngIf="!this.flagFormulario" accept="application/pdf" type="file"
+                        class="form-control border-input" name="documentoPdf"
+                        (change)="cargarFormulario($event.target.files)">
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fechaInicioFormulario">Fecha Inicio de Vigencia: *</label> <br />
+                        <p-calendar required="true" name="fechaInicioFormulario"
+                          [(ngModel)]="model.fechaInicioFormulario" dateFormat="dd/mm/yy"></p-calendar>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fechaFinFormulario">Fecha Fin de Vigencia: *</label> <br />
+                        <p-calendar required="true" name="fechaFinFormulario" [(ngModel)]="model.fechaFinFormulario"
+                          dateFormat="dd/mm/yy"></p-calendar>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="certResidenciaFiscal">Certificado de Residencia Fiscal: * </label>
+                      <a *ngIf="this.flagCertificado" (click)="verCertificado(proveedor.prId)"> &nbsp; <img
+                          src="./assets/img/buscar.png" width="20" height="20" alt="">
+                      </a> &nbsp;&nbsp; <a *ngIf="this.flagCertificado"
+                        (click)="cambiarCertificado(proveedor.prId)"><img src="./assets/img/editar.png" width="20"
+                          height="20" alt=""></a>
+                      <input *ngIf="!this.flagCertificado" accept="application/pdf" type="file"
+                        class="form-control border-input" name="documentoPdf"
+                        (change)="cargarCertificado($event.target.files)">
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fechaInicioFormulario">Fecha Inicio de Vigencia: *</label> <br />
+                        <p-calendar required="true" name="fechaInicioCertificado"
+                          [(ngModel)]="model.fechaInicioCertificado" dateFormat="dd/mm/yy"></p-calendar>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="fechaFinFormulario">Fecha Fin de Vigencia: *</label> <br />
+                        <p-calendar required="true" name="fechaFinCertificado" [(ngModel)]="model.fechaFinCertificado"
+                          dateFormat="dd/mm/yy"></p-calendar>
+                      </div>
+                    </div>
+                    <br /><br /><br /><br />
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-1">
+                  <div class="content">
+                    <button type="submit" class="btn btn-fill btn-warning">Guardar</button></div>
+                </div>
+                <div class="col-md-1">
+                  <div class="content">
+                    <a (click)="inicializarObjetos()" class="btn btn-fill btn-warning">Cancelar</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

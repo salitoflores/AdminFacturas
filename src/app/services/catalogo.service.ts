@@ -33,6 +33,10 @@ export class CatalogoService {
         return this.http.get<Catalogo>( `${this.URL_SRV_CATALOGO}/secure/buscarCatalogoPorId/${id}` );
     }
 
+    buscarCatalogoPorDescripcion ( descripcion: String ): Observable<any> {
+        return this.http.get<Catalogo>( `${this.URL_SRV_CATALOGO}/secure/buscarCatalogoPorDescripcion/${descripcion}` );
+    }
+
     listarTipoCatalogo(): Observable<Catalogo[]> {
         return this.http.get<Catalogo[]>( `${this.URL_SRV_CATALOGO}/secure/listarTipoCatalogo` );
     }

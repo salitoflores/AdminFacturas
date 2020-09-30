@@ -36,17 +36,17 @@
 			</div>
 			<div class="content" >
 				<div class="row">
-					<table class="table table-striped" *ngIf="lstCatalogosHijos.length > 0">
-						<thead>
+					<p-table [value]="lstCatalogosHijos" *ngIf="lstCatalogosHijos.length > 0" [paginator]="true" [rows]="10" >
+						<ng-template pTemplate="header">
 							<tr>
 								<th scope="col">Editar</th>
-								<th scope="col">Sub-cat&aacute;logo</th>
+								<th scope="col">SubCat&aacute;logo</th>
 								<th scope="col">Cuenta</th>
 								<th scope="col">Estado</th>
 							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let catalogo of lstCatalogosHijos">
+						</ng-template>
+						<ng-template pTemplate="body" let-catalogo>
+							<tr>
 								<td><a
 									(click)="modificarCatalogo(catalogo.cpIdCatalogo)"><img
 										src="./assets/img/editar.png" width="20" height="20"
@@ -55,8 +55,8 @@
 								<td>{{catalogo.cpCampo3}} </td>
 								<td>{{catalogo.cpestado}}</td>
 							</tr>
-						</tbody>
-					</table>
+						</ng-template>
+					</p-table>
 				</div>
 			</div>
 		</div>
