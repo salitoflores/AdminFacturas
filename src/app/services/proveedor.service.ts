@@ -22,9 +22,8 @@ export class ProveedorService {
         return this.http.get( `${this.URL_SRV_PROVEEDOR}/buscarCertificado/${id}`, { responseType: 'blob' } );
     }
 
-    guardarProveedor( proveedorCatalogo: Catalogo, proveedor: Proveedor, fileFormulario: File, fileCertificado: File ): Observable<any> {
+    guardarProveedor( proveedor: Proveedor, fileFormulario: File, fileCertificado: File ): Observable<any> {
         const formData: FormData = new FormData();
-        formData.append('proveedorCatalogo', JSON.stringify(proveedorCatalogo));
         formData.append('proveedor', JSON.stringify(proveedor));
         formData.append('fileFormulario', fileFormulario);
         formData.append('fileCertificado', fileCertificado);

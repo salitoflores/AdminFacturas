@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="card col-md-12" *ngIf="flagListado == true">
+      <div class="header">
+        <h4 class="title">Listado de Contratos Registrados para .....</h4>
+        <br>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="card">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card col-md-12" *ngIf="flagCrear == true">
+      <div class="header">
+        <h4 class="title">Creaci&oacute;n / Actualizaci&oacute;n de Contrato</h4>
+      </div>
+      <div class="content">
+        <div class="row">
+          <div class="row">
+            <form (submit)="formContrato.form.valid && guardarContrato()" #formContrato="ngForm"
+              novalidate>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="content">
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="content">
+
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card" *ngIf="this.flagFormularios">
+                  <div class="content">
+
+                    
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-1">
+                  <div class="content">
+                    <button type="submit" class="btn btn-fill btn-warning">Guardar</button></div>
+                </div>
+                <div class="col-md-1">
+                  <div class="content">
+                    <a (click)="inicializarObjetos()" class="btn btn-fill btn-warning">Cancelar</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

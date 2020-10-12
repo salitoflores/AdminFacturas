@@ -4,11 +4,12 @@
     <div class="card col-md-12" *ngIf="flagListado == true">
       <div class="header">
         <h4 class="title">Listado de Proveedores Registrados</h4>
+        <br>
       </div>
       <div class="content">
         <div class="row">
           <div class="card">
-            <p-table [value]="lstProveedor" *ngIf="lstProveedor.length > 0" [paginator]="true" [rows]="10"
+            <p-table [value]="lstProveedor" *ngIf="lstProveedor.length > 0" [paginator]="true" [rows]="20"
               [scrollable]="true">
               <ng-template pTemplate="header">
                 <tr>
@@ -55,7 +56,8 @@
             <br />
             <div class="btn-group">
               <a (click)="nuevoProveedor()" class="btn btn-fill btn-warning">Nuevo Proveedor</a>
-            </div>
+              
+            </div><hr>
           </div>
         </div>
       </div>
@@ -97,12 +99,13 @@
 
                     <div class="form-group">
                       <label for="idPais">Pa&iacute;s: *</label> <select class="form-control border-input"
-                        [(ngModel)]="proveedor.idPais" name="idPais" #idPais="ngModel" (change)="verificarPais(idPais.value)" required>
-                        <option *ngFor="let catalogo of lstPaises"  [value]="catalogo.cpIdCatalogo">
+                        [(ngModel)]="proveedor.idPais" name="idPais" #idPais="ngModel" (change)="verificarPais()" required>
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        <option *ngFor="let catalogo of lstPaises" [value]="catalogo.cpIdCatalogo">
                           {{catalogo.cpCodigoCatalogo}}
                         </option>
                       </select>
-                      <bi-errors [control]="idProveedor" ngClass="text-danger"></bi-errors>
+                      <bi-errors [control]="idPais" ngClass="text-danger"></bi-errors>
                     </div>
                   </div>
                 </div>

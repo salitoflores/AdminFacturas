@@ -47,7 +47,7 @@ import { DialogModule } from 'primeng/dialog';
 import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-archivo-ci.component';
 import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
 import { RegistroProveedorComponent } from './pages/registro-proveedor/registro-proveedor.component';
-
+import { ContratoComponent } from './pages/contrato/contrato.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -80,7 +80,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ReporteEstadoFacturasComponent,
     GenerarArchivoCIComponent,
     RegistroAhorrosComponent,
-    RegistroProveedorComponent],
+    RegistroProveedorComponent,
+    ContratoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

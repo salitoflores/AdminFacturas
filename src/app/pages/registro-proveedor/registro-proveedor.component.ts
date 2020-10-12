@@ -33,6 +33,7 @@ export class RegistroProveedorComponent implements OnInit {
   auxFile: ImFactura = {};
   flagFormularios: boolean;
   pais: Catalogo;
+  paisBusqueda: Catalogo;
 
   //listado de proveedores
   lstProveedor: Proveedor[] = [];
@@ -60,6 +61,7 @@ export class RegistroProveedorComponent implements OnInit {
     this.proveedor = {};
     this.proveedorCatalogo = {};
     this.pais = {};
+    this.paisBusqueda = {};
     this.flagFormulario = false;
     this.flagCertificado = false;
     //catalogo paises
@@ -90,7 +92,6 @@ export class RegistroProveedorComponent implements OnInit {
         console.error("Error al cargar FlagPadre de Area Responsble");
       });
     // catalogo Criticidad
-    //catalogo area responsable
     this.catalogoService.buscarCatalogoPorDescripcion('CRITICIDAD').subscribe(res => {
       let idPadrePais = res;
       this.catalogoService.buscarCatalogos(idPadrePais.cpIdCatalogo).subscribe(res => {
@@ -106,20 +107,18 @@ export class RegistroProveedorComponent implements OnInit {
   }
 
   guardarProveedor() {
-    console.log(this.flagFormularios);
-    this.proveedorCatalogo.cpestado = true;
-    this.verificarPais(this.proveedor.prIdPais.cpIdCatalogo);
-    console.log(this.proveedor);
-    this.proveedorService.guardarProveedor(this.proveedorCatalogo, this.proveedor, this.imagenFormulario, this.imagenCertificado).subscribe(
+    console.log(this.proveedor + ' ' + this.imagenFormulario + ' ' + this.imagenCertificado);
+    this.proveedorService.guardarProveedor(this.proveedor, this.imagenFormulario, this.imagenCertificado).subscribe(
       res => {
         swal({ title: 'OK!', text: 'Registro exitoso', icon: 'success' });
         this.inicializarObjetos();
       },
       err => {
         swal({ title: 'Error!', text: err.error.descripcion, icon: 'error' });
-        this.inicializarObjetos();
+        
       }
     );
+    
   }
 
   cargarFormulario(files: FileList) {
@@ -183,6 +182,7 @@ export class RegistroProveedorComponent implements OnInit {
   }
 
   nuevoProveedor() {
+    this.inicializarObjetos();
     this.flagCrear = true;
     this.flagListado = false;
   }
@@ -195,7 +195,7 @@ export class RegistroProveedorComponent implements OnInit {
     this.proveedor.idPais = this.proveedor.prIdPais.cpIdCatalogo;
     this.proveedor.idCriticidad = this.proveedor.prIdCriticidad.cpIdCatalogo;
     this.proveedor.idResponsableArea = this.proveedor.prIdResponsableArea.cpIdCatalogo;
-    this.verificarPais(this.proveedor.idPais);
+    this.verificarPais();
     this.proveedorService.buscarFormulario(this.proveedor.prId).subscribe(
       data => {
         this.auxFile.dpImgFactura = data;
@@ -228,10 +228,9 @@ export class RegistroProveedorComponent implements OnInit {
 
   }
 
-  verificarPais(idPais: number) {
-    this.catalogoService.buscarCatalogoPorId(idPais).subscribe(res => {
+  verificarPais() {
+    this.catalogoService.buscarCatalogoPorId(this.proveedor.idPais).subscribe(res => {
       this.pais = res;
-      console.log(this.pais.cpCodigoCatalogo);
       if (this.pais.cpCodigoCatalogo === "ECUADOR") {
         this.flagFormularios = false;
         this.proveedor.prFechaInicioFormulario = null;
@@ -240,10 +239,11 @@ export class RegistroProveedorComponent implements OnInit {
         this.proveedor.prFechaFinCertificado = null;
         this.proveedor.prFormularioConozcaProveedor = null;
         this.proveedor.prCertificadoResidenciaFiscal = null;
+        console.log(this.proveedor);
       } else {
         this.flagFormularios = true;
+        console.log(this.proveedor);
       }
-      console.log(this.pais.cpCodigoCatalogo + " " + this.flagFormularios);
     },
       err => {
         console.error("Error al cargar Paises");
