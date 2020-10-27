@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Proveedor } from '../../shared/model/proveedor';
 import { Catalogo } from '../../shared/model/catalogo';
 import { CatalogoService } from 'src/app/services/catalogo.service';
 import swal from 'sweetalert';
 import { ImFactura } from '../../shared/model/im-factura';
 import { ProveedorService } from '../../services/proveedor.service';
-import { Router } from '@angular/router';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
 @Component({
   selector: 'bi-registro-proveedor',
@@ -39,13 +40,17 @@ export class RegistroProveedorComponent implements OnInit {
   lstProveedor: Proveedor[] = [];
   flagListado: boolean;
 
-  constructor(private catalogoService: CatalogoService, private proveedorService: ProveedorService, private router: Router) { }
+  constructor(
+    private catalogoService: CatalogoService,
+    private proveedorService: ProveedorService,
+    private router: Router) { }
 
   ngOnInit() {
     this.inicializarObjetos();
   }
 
   inicializarObjetos() {
+
     //cargar lista de Proveedores
     this.proveedorService.cargarListaProveedores().subscribe(res => {
       this.lstProveedor = res;
@@ -115,10 +120,10 @@ export class RegistroProveedorComponent implements OnInit {
       },
       err => {
         swal({ title: 'Error!', text: err.error.descripcion, icon: 'error' });
-        
+
       }
     );
-    
+
   }
 
   cargarFormulario(files: FileList) {
@@ -225,7 +230,7 @@ export class RegistroProveedorComponent implements OnInit {
   }
 
   consultarContratos(prov: Proveedor) {
-
+    this.router.navigate(['home/contrato'], { queryParams: { idProveedor: prov.idProveedor } });
   }
 
   verificarPais() {

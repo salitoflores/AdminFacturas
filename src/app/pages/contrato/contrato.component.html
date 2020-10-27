@@ -1,33 +1,109 @@
 <div class="container-fluid">
   <div class="row">
 
-    <div class="card col-md-12" *ngIf="flagListado == true">
+    <div class="card col-md-12" *ngIf="flagListadoContratosProveedor == true">
       <div class="header">
-        <h4 class="title">Listado de Contratos Registrados para .....</h4>
+        <h4 class="title">Listado de Contratos Registrados para {{proveedorBuscado.cpCodigoCatalogo}}</h4>
         <br>
       </div>
       <div class="content">
         <div class="row">
           <div class="card">
+            <p-table [value]="lstContratosProveedor" *ngIf="lstContratosProveedor.length > 0" [paginator]="true"
+              [rows]="10" [scrollable]="true">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th scope="col" style="text-align: center; width: 80px;">Accion</th>
+                  <th scope="col" style="text-align: center; width: 120px;">Fecha Inicio</th>
+                  <th scope="col" style="text-align: center; width: 120px;">Fecha Fin</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Tipo de Contrato</th>
+                  <th scope="col" style="text-align: center; width: 100px;">% Impuestos</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Tipo de Pago</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Área TI Responsable</th>
+                  <th scope="col" style="text-align: center; width: 200px;">Estado de Contrato</th>
+                  <th scope="col" style="text-align: center; width: 300px;">Condiciones</th>
+                  <th scope="col" style="text-align: center; width: 300px;">Beneficios</th>
+                  <th scope="col" style="text-align: center; width: 300px;">Comentarios del Líder por Beneficios</th>
+                  <th scope="col" style="text-align: center; width: 300px;">Observaciones sobre Ejecución Contrato</th>
+                  <th scope="col" style="text-align: center; width: 80px;">Contrato</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-contrato>
+                <tr>
+                  <td style="text-align: center; width: 80px;"><a (click)="editarContrato(contrato)"><img
+                        src="./assets/img/editar.png" width="20" height="20" title="Editar Contrato"></a></td>
+                  <td style="text-align: center; width: 120px;">{{contrato.coFechaInicio | date:'dd/MM/yyyy'}}</td>
+                  <td style="text-align: center; width: 120px;">{{contrato.coFechaFin | date:'dd/MM/yyyy'}}</td>
+                  <td style="width: 200px;">{{contrato.coIdTipoContrato.cpCodigoCatalogo }}</td>
+                  <td style="text-align: center; width: 100px;">{{contrato.coPorcentajeImpuestos }}</td>
+                  <td style="width: 200px;">{{contrato.coIdTipoPago.cpCodigoCatalogo }}</td>
+                  <td style="width: 200px;">{{contrato.coIdAreaTi.cpCodigoCatalogo }}</td>
+                  <td style="width: 200px;">{{contrato.coIdEstado.cpCodigoCatalogo }}</td>
+                  <td style="width: 300px;">{{contrato.coCondiciones }}</td>
+                  <td style="width: 300px;">{{contrato.coBeneficios }}</td>
+                  <td style="width: 300px;">{{contrato.coComentarios }}</td>
+                  <td style="width: 300px;">{{contrato.coObservaciones }}</td>
+                  <td style="text-align: center; width: 80px;"><a (click)="verDocumento(contrato.coIdContrato)">Ver
+                      Contrato</a></td>
+                </tr>
+              </ng-template>
+            </p-table>
+            <br />
+            <div class="btn-group">
+              <a (click)="nuevoContrato(proveedorBuscado.cpIdCatalogo)" class="btn btn-fill btn-warning">Nuevo Contrato</a>
+            </div>
+            <hr>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="card col-md-12" *ngIf="flagCrear == true">
+    <div class="card col-md-12" *ngIf="flagCrearContrato == true">
       <div class="header">
         <h4 class="title">Creaci&oacute;n / Actualizaci&oacute;n de Contrato</h4>
       </div>
       <div class="content">
         <div class="row">
           <div class="row">
-            <form (submit)="formContrato.form.valid && guardarContrato()" #formContrato="ngForm"
-              novalidate>
+            <form (submit)="formContrato.form.valid && guardarContrato()" #formContrato="ngForm" novalidate>
               <div class="col-md-4">
                 <div class="card">
                   <div class="content">
 
-                    
+                    <div class="form-group">
+                      <label for="idProveedor">Proveedor: *</label> <select class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.idProveedor" name="idProveedor" #idProveedor="ngModel" disabled>
+                        <option *ngFor="let catalogo of lstCatalogoProveedores" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idProveedor" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fechaInicioContrato">Fecha Inicio Contrato: *</label> <br />
+                      <p-calendar required name="fechaInicioContrato" [(ngModel)]="model.fechaInicioAux"
+                        dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="fechaFinContrato">Fecha Fin Contrato: *</label> <br />
+                      <p-calendar required name="fechaFinContrato" [(ngModel)]="model.fechaFinAux"
+                        dateFormat="dd/mm/yy"></p-calendar>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idTipoContrato">Tipo de Contrato: *</label> <select class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.idTipoContrato" name="idTipoContrato" #idTipoContrato="ngModel"
+                        required>
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        <option *ngFor="let catalogo of lstCatalogoTipoContrato" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idTipoContrato" ngClass="text-danger"></bi-errors>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -35,15 +111,97 @@
                 <div class="card">
                   <div class="content">
 
-                    
+                    <div class="form-group">
+                      <label for="impuestos">% Impuestos: (ej. 15.3)* </label>
+                      <input type="text" class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.coPorcentajeImpuestos" name="impuestos" #impuestos="ngModel"
+                        required>
+                      <bi-errors [control]="impuestos" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idTipoPago">Tipo de Pago: *</label> <select class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.idTipoPago" name="idTipoPago" #idTipoPago="ngModel" required>
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        <option *ngFor="let catalogo of lstCatalogoTipoPago" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idTipoPago" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idAreaTi">Area TI Responsable: *</label> <select class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.idAreaTi" name="idAreaTi" #idAreaTi="ngModel" required>
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        <option *ngFor="let catalogo of lstCatalogoAreaTi" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idAreaTi" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="idEstado">Estado de Contrato: *</label> <select class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.idEstado" name="idEstado" #idEstado="ngModel" required>
+                        <option [ngValue]="null" disabled>Seleccione...</option>
+                        <option *ngFor="let catalogo of lstCatalogoEstadoContrato" [value]="catalogo.cpIdCatalogo">
+                          {{catalogo.cpCodigoCatalogo}}
+                        </option>
+                      </select>
+                      <bi-errors [control]="idEstado" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="documentoPdf">Contrato: (formato PDF) * </label>
+                      <a *ngIf="this.flagDocumento" (click)="verDocumento(contratoNuevo.coIdContrato)"> &nbsp; <img
+                          src="./assets/img/buscar.png" width="20" height="20" alt="">
+                      </a> &nbsp;&nbsp; <a *ngIf="this.flagDocumento"
+                        (click)="cambiarDocumento(contratoNuevo.coIdContrato)"><img src="./assets/img/editar.png"
+                          width="20" height="20" alt=""></a>
+                      <input *ngIf="!this.flagDocumento" accept="application/pdf" type="file"
+                        class="form-control border-input" name="documentoPdf"
+                        (change)="cargarDocumento($event.target.files)">
+
+                    </div>
+
                   </div>
                 </div>
               </div>
+
               <div class="col-md-4">
-                <div class="card" *ngIf="this.flagFormularios">
+                <div class="card">
                   <div class="content">
 
-                    
+                    <div class="form-group">
+                      <label for="condiciones">Condiciones:</label>
+                      <textarea type="text" class="form-control border-input" [(ngModel)]="contratoNuevo.coCondiciones"
+                        name="condiciones" #comentario="ngModel" maxlength="2000"></textarea>
+                      <bi-errors [control]="condiciones" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="beneficios">Beneficios:</label>
+                      <textarea type="text" class="form-control border-input" [(ngModel)]="contratoNuevo.coBeneficios"
+                        name="beneficios" #beneficios="ngModel" maxlength="2000"></textarea>
+                      <bi-errors [control]="beneficios" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="comentarios">Comentarios del Líder por Beneficios:</label>
+                      <textarea type="text" class="form-control border-input" [(ngModel)]="contratoNuevo.coComentarios"
+                        name="comentarios" #comentarios="ngModel" maxlength="2000"></textarea>
+                      <bi-errors [control]="comentarios" ngClass="text-danger"></bi-errors>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="observaciones">Observaciones sobre la Ejecución del Contrato:</label>
+                      <textarea type="text" class="form-control border-input"
+                        [(ngModel)]="contratoNuevo.coObservaciones" name="observaciones" #observaciones="ngModel"
+                        maxlength="2000"></textarea>
+                      <bi-errors [control]="observaciones" ngClass="text-danger"></bi-errors>
+                    </div>
+
                   </div>
                 </div>
               </div>

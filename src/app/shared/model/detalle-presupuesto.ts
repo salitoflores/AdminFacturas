@@ -1,4 +1,4 @@
-import { CabeceraPresupuesto } from '../model/cabecera-presupuesto';
+import { CabeceraPresupuesto } from './cabecera-presupuesto';
 import { Catalogo } from './catalogo';
 import { Usuario } from './usuario';
 

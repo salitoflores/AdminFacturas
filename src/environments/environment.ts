@@ -12,7 +12,8 @@ export const environment = {
   urlSrvCabeceraPresupuesto: '/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
   urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto',
   urlSrvFechasAutorizadas: '/srvPresupuestoTi-web/rest/fechasAutorizadas',
-  urlSrvProveedor: '/srvPresupuestoTi-web/rest/proveedor'
+  urlSrvProveedor: '/srvPresupuestoTi-web/rest/proveedor',
+  urlSrvPresupuesto: '/srvPresupuestoTi-web/rest'
 }; 
 
 /*
