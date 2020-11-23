@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Accion } from '../../shared/model/accion';
 import { AccionService } from '../../services/accion.service';
 import { UsuarioService } from '../../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component( {
     selector: 'bi-accion',
@@ -14,7 +15,8 @@ export class AccionComponent implements OnInit {
     lstAccionesRegistradas: Accion[] = [];
 
     constructor( private accionService: AccionService,
-        private usuarioService: UsuarioService ) { }
+        private usuarioService: UsuarioService,
+        private router: Router ) { }
 
     ngOnInit() {
         this.inicializarObjetos();
@@ -35,7 +37,10 @@ export class AccionComponent implements OnInit {
                     swal( ':(', 'Sesión Caducada', 'info' );
                     this.usuarioService.logout();
                 } else {
-                    console.error( err );
+                    if (err.error.mensaje === "El token ha expirado, ingrese nuevamente") {
+                        localStorage.removeItem('userToken');
+                        this.router.navigate(['/login']);
+                      }
                 }
             } );
     }

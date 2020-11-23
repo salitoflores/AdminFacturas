@@ -34,7 +34,6 @@ export class AprobacionComponent implements OnInit {
 
     ngOnInit() {
         if (validarAccion('APRFAC2')) {
-            console.log('Carga catalogos');
             this.cargarCatalogoArea();
         } if (validarAccion('APRFAC1')) {
             this.cargarFacturasPendientes();
