@@ -1,11 +1,12 @@
 import { CabeceraPresupuesto } from './cabecera-presupuesto';
 import { Catalogo } from './catalogo';
 import { Usuario } from './usuario';
+import { CabeceraDetalle } from './cabecera-detalle';
 
 export interface DetallePresupuesto {
     dpIdDetalle?: number;
-    dpIdCabecera?: CabeceraPresupuesto;
-    idCabecera?: number;
+    dpIdCabeceraDetalle?: CabeceraDetalle;
+    idCabeceraDetalle?: number;
     cpIdProveedor?: Catalogo;
     idProveedor?: number;
     cpIdFabricante?: Catalogo;

@@ -14,9 +14,24 @@
 							<div class="card">
 								<div class="content">
 									<div class="form-group">
+										<label for="idAnio">A&ntilde;o Presupuesto: *</label> <select
+											class="form-control border-input"
+											[(ngModel)]="anio.cpIdCatalogo" name="idAnio"
+											#idAnio="ngModel" required>
+											<option [ngValue]="null" selected>Seleccione...</option>
+											<option *ngFor="let catalogo of lstCodigoCatalogoAnio"
+												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}
+											</option>
+										</select>
+										<bi-errors [control]="idAnio" ngClass="text-danger"></bi-errors>
+									</div>
+								</div>
+								<div class="content">
+									<div class="form-group">
 										<label for="idMes">Mes: *</label> <select class="form-control border-input"
 											[(ngModel)]="mes.cpIdCatalogo" name="idMes" #idMes="ngModel"
 											required>
+											<option [ngValue]="null" selected>Seleccione...</option>
 											<option *ngFor="let catalogo of lstCodigoCatalogoMes"
 												[value]="catalogo.cpIdCatalogo">{{catalogo.cpCodigoCatalogo}}</option>
 										</select>

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="card col-md-12" >
+      <div class="header">
+        <h4 class="title">Facturas a Aplicar Pagos Diferidos</h4>
+        <br>
+      </div>
+      <div class="content">
+				<div class="row">
+					<form
+						(submit)="formFacturasDiferidas.form.valid && consultar()"
+						#formFacturasDiferidas="ngForm" novalidate>
+						<div class="col-md-4">
+							<div class="content">
+								<div class="form-group">
+									<label for="idCuentaContable">Cuenta Contable: *</label> <select
+										class="form-control border-input"
+										[(ngModel)]="parametroDiferido.pdIdParametro" name="idCuentaContable"
+										#idCuentaContable="ngModel" required>
+										<option [ngValue]="null" selected>Seleccione...</option>
+										<option *ngFor="let cuenta of lstParametrosDiferidos"
+											[value]="cuenta.pdIdParametro">{{cuenta.pdIdCuentaContable.cpCodigoCatalogo}} - {{cuenta.pdNumeroMeses}} - {{cuenta.pdValorBase}}
+										</option>
+									</select>
+									<bi-errors [control]="idCuentaContable" ngClass="text-danger"></bi-errors>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-12">
+							<button type="submit" class="btn btn-fill btn-warning">Buscar</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+    </div>
+
+    <div class="card col-md-12" >
+      <div class="content">
+        <div class="row">
+          <div class="row">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

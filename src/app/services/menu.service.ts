@@ -12,20 +12,20 @@ import { TreeNode } from 'primeng/api';
 })
 export class MenuService {
 
-    readonly URL_SRV_MENU = environment.urlSrvMenu;
+    readonly URL_SRV_PRESUPUESTO = environment.urlSrvPresupuesto;
 
     constructor( private http: HttpClient ) { }
 
     cargarMenusRegistrados(): Observable<Menu[]> {
-        return this.http.get<Menu[]>( `${this.URL_SRV_MENU}/secure/cargarMenusRegistrados` );
+        return this.http.get<Menu[]>( `${this.URL_SRV_PRESUPUESTO}/menu/secure/cargarMenusRegistrados` );
     }
 
     guardarMenu( menu: Menu ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_MENU}/secure/crearMenu`, menu );
+        return this.http.post( `${this.URL_SRV_PRESUPUESTO}/menu/secure/crearMenu`, menu );
     }
 
     cargarMenuArbol(idRol: number): Observable<TreeNode[]> {
-        return this.http.get<TreeNode[]>(`${this.URL_SRV_MENU}/secure/cargarMenuArbol/${idRol}`);
+        return this.http.get<TreeNode[]>(`${this.URL_SRV_PRESUPUESTO}/menu/secure/cargarMenuArbol/${idRol}`);
     }
 
 }

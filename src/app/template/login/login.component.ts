@@ -11,7 +11,7 @@ import swal from 'sweetalert';
     selector: 'bi-login',
     templateUrl: './login.component.html',
     styleUrls: ['../../../assets/css/main.css', '../../../assets/css/util.css',
-        '../../../assets/css/bootstrap.4.3.1.min.css']
+        '../../../assets/css/bootstrap.4.3.1.min.css', '../../../assets/css/login.css']
 })
 export class LoginComponent implements OnInit {
 

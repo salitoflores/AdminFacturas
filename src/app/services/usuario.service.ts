@@ -10,20 +10,20 @@ import { Router } from '@angular/router';
 } )
 export class UsuarioService {
 
-    readonly URL_SRV_USUARIO = environment.urlSrvUsuario;
+    readonly URL_SRV_PRESUPUESTO = environment.urlSrvPresupuesto;
 
     constructor( private http: HttpClient, private router: Router ) { }
 
     verificarUsuario( usuario: Usuario ): Observable<any> {
-        return this.http.post<Usuario>(`${this.URL_SRV_USUARIO}/verificarUsuario`, usuario );
+        return this.http.post<Usuario>(`${this.URL_SRV_PRESUPUESTO}/usuario/verificarUsuario`, usuario );
     }
 
     cargarUsuariosRegistrados(): Observable<Usuario[]> {
-        return this.http.get<Usuario[]>( `${this.URL_SRV_USUARIO}/secure/cargarUsuariosRegistrados` );
+        return this.http.get<Usuario[]>( `${this.URL_SRV_PRESUPUESTO}/usuario/secure/cargarUsuariosRegistrados` );
     }
 
     guardarUsuario( usuario: Usuario ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_USUARIO}/secure/crearUsuario`, usuario );
+        return this.http.post( `${this.URL_SRV_PRESUPUESTO}/usuario/secure/crearUsuario`, usuario );
     }
 
     logout() {

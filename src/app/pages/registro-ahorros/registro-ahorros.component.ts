@@ -22,7 +22,7 @@ export class RegistroAhorrosComponent implements OnInit {
 
   ngOnInit() {
     this.detallePresupuesto = {};
-    this.detallePresupuesto.idCabecera = this.route.snapshot.queryParams['id'];
+    this.detallePresupuesto.idCabeceraDetalle = this.route.snapshot.queryParams['id'];
 
     //cargar mes
     this.catalogoService.buscarCatalogos(595).subscribe(res => {

@@ -21,6 +21,8 @@ import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-ar
 import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
 import { RegistroProveedorComponent } from './pages/registro-proveedor/registro-proveedor.component';
 import { ContratoComponent } from './pages/contrato/contrato.component';
+import { ParametrosDiferidosComponent } from './pages/parametros-diferidos/parametros-diferidos.component';
+import { FacturasDiferidasComponent } from './pages/facturas-diferidas/facturas-diferidas.component';
 
 const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -46,7 +48,9 @@ const ROUTES: Routes = [
             { path: 'reporte-estado-facturas', component: ReporteEstadoFacturasComponent },
             { path: 'registro-proveedor', component: RegistroProveedorComponent },
             { path: 'registro-ahorros', component: RegistroAhorrosComponent},
-            { path: 'contrato', component: ContratoComponent}
+            { path: 'contrato', component: ContratoComponent},
+            { path: 'parametros-diferidos', component: ParametrosDiferidosComponent },
+            { path: 'facturas-diferidas', component : FacturasDiferidasComponent}
       ]}
 ];
 

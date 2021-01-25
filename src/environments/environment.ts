@@ -4,17 +4,8 @@
 
 export const environment = {
   production: false,
-  urlSrvUsuario: '/srvPresupuestoTi-web/rest/usuario',
-  urlSrvRol: '/srvPresupuestoTi-web/rest/rol',
-  urlSrvAccion: '/srvPresupuestoTi-web/rest/accion',
-  urlSrvMenu: '/srvPresupuestoTi-web/rest/menu',
-  urlSrvCatalogo: '/srvPresupuestoTi-web/rest/catalogo',
-  urlSrvCabeceraPresupuesto: '/srvPresupuestoTi-web/rest/cabeceraPresupuesto',
-  urlSrvDetallePresupuesto: '/srvPresupuestoTi-web/rest/detallePresupuesto',
-  urlSrvFechasAutorizadas: '/srvPresupuestoTi-web/rest/fechasAutorizadas',
-  urlSrvProveedor: '/srvPresupuestoTi-web/rest/proveedor',
   urlSrvPresupuesto: '/srvPresupuestoTi-web/rest'
-}; 
+};
 
 /*
  * In development mode, for easier debugging, you can ignore zone related error

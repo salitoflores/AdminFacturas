@@ -11,7 +11,7 @@ import { Catalogo } from '../shared/model/catalogo';
 } )
 export class DetallePresupuestoService {
 
-    readonly URL_SRV_DETALLE_PRESUPUESTO = environment.urlSrvDetallePresupuesto;
+    readonly URL_SRV_DETALLE_PRESUPUESTO = environment.urlSrvPresupuesto;
 
     constructor( private http: HttpClient) { }
     guardarDatosDetallePresupuesto( detallePresupuesto: DetallePresupuesto, fileImg: File, fileXml: File, fileAnexo: File ): Observable<any> {
@@ -30,60 +30,59 @@ export class DetallePresupuestoService {
         } else {
             formData.append('fileAnexo', fileAnexo);
         }
-        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/crearDetallePresupuesto`, formData );
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/crearDetallePresupuesto`, formData );
     }
 
-    buscarDetalleFiltroCabeceraMes( idCabecera: number, idMes: number ): Observable<DetallePresupuesto[]> {
-        return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/buscarDetalleCabeceraMes/${idCabecera}/${idMes}` );
+    buscarDetalleFiltroCabeceraMes( idCabecera: number, idMes: number, idAnio: number ): Observable<DetallePresupuesto[]> {
+        return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/buscarDetalleCabeceraMes/${idCabecera}/${idMes}/${idAnio}` );
     }
 
     cargarFacturasFiltroMesUsuarioRegistro( idMes: number, idUsuario: number ): Observable<DetallePresupuesto[]> {
-        return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/cargarFacturasFiltroMesUsuarioRegistro/${idMes}/${idUsuario}` );
+        return this.http.get<DetallePresupuesto[]>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/cargarFacturasFiltroMesUsuarioRegistro/${idMes}/${idUsuario}` );
     }
 
     buscarDetallePresupuestoPorId( idDetalle: number ): Observable<any> {
-        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/buscarDetallePresupuestoPorId/${idDetalle}` );
+        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/buscarDetallePresupuestoPorId/${idDetalle}` );
     }
 
     recuperarFacturasEstado0( idArea: number ): Observable<any> {
-        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/recuperarFacturasEstado0/${idArea}` );
+        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/recuperarFacturasEstado0/${idArea}` );
     }
 
     recuperarFacturasEstado1( idArea: number ): Observable<any> {
-        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/recuperarFacturasEstado1/${idArea}` );
+        return this.http.get<DetallePresupuesto>( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/recuperarFacturasEstado1/${idArea}` );
     }
 
     buscarFactura( id: number ): Observable<any> {
-        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/buscarFactura/${id}`, { responseType: 'blob' } );
+        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/buscarFactura/${id}`, { responseType: 'blob' } );
     }
 
     buscarXml( id: number ): Observable<any> {
-        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/buscarXml/${id}`, { responseType: 'blob' } );
+        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/buscarXml/${id}`, { responseType: 'blob' } );
     }
 
     buscarAnexos( id: number ): Observable<any> {
-        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/buscarAnexos/${id}`, { responseType: 'blob' } );
+        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/buscarAnexos/${id}`, { responseType: 'blob' } );
     }
 
     aprobarFacturasAprobador1( lstFacturasAprobar: DetallePresupuesto[] ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/aprobarFacturasAprobador1`, lstFacturasAprobar );
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/aprobarFacturasAprobador1`, lstFacturasAprobar );
     }
 
     aprobarFacturasAprobador2( lstFacturasAprobar: DetallePresupuesto[] ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/aprobarFacturasAprobador2`, lstFacturasAprobar );
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/aprobarFacturasAprobador2`, lstFacturasAprobar );
     }
 
     rechazarFactura( facturaRechazada: DetallePresupuesto ): Observable<any> {
-        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/rechazarFactura`, facturaRechazada );
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/rechazarFactura`, facturaRechazada );
     }
 
     generarArchivoCI( idArea: number, idMes: number, mes: String): Observable<any> {
-        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/generarArchivoCI/${idArea}/${idMes}/${mes}`, { responseType: 'blob' } );
+        return this.http.get( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/generarArchivoCI/${idArea}/${idMes}/${mes}`, { responseType: 'blob' } );
     }
 
     guardarDatosAhorro( detallePresupuesto: DetallePresupuesto ): Observable<any> {
-        //console.log('Llega al servicio');
-        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/secure/crearAhorro`, detallePresupuesto );
+        return this.http.post( `${this.URL_SRV_DETALLE_PRESUPUESTO}/detallePresupuesto/secure/crearAhorro`, detallePresupuesto );
     }
 
 }

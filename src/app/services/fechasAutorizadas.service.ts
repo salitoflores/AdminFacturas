@@ -7,9 +7,9 @@ import { FechasAutorizadas } from '../shared/model/fechas-autorizadas';
   providedIn: 'root'
 })
 export class FechasAutorizadasService {
-  readonly URL_SRV_FECHAS_AUTORIZADAS = environment.urlSrvFechasAutorizadas;
+  readonly URL_SRV_FECHAS_AUTORIZADAS = environment.urlSrvPresupuesto;
   constructor(private http: HttpClient) { }
   recuperarFechas(): Observable<any> {
-    return this.http.get<FechasAutorizadas>(`${this.URL_SRV_FECHAS_AUTORIZADAS}/secure/recuperarFechas`);
+    return this.http.get<FechasAutorizadas>(`${this.URL_SRV_FECHAS_AUTORIZADAS}/fechasAutorizadas/secure/recuperarFechas`);
   }
 }

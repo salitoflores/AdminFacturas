@@ -48,6 +48,8 @@ import { GenerarArchivoCIComponent } from './pages/generar-archivo-ci/generar-ar
 import { RegistroAhorrosComponent } from './pages/registro-ahorros/registro-ahorros.component';
 import { RegistroProveedorComponent } from './pages/registro-proveedor/registro-proveedor.component';
 import { ContratoComponent } from './pages/contrato/contrato.component';
+import { ParametrosDiferidosComponent } from './pages/parametros-diferidos/parametros-diferidos.component';
+import { FacturasDiferidasComponent } from './pages/facturas-diferidas/facturas-diferidas.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     wheelPropagation: true
@@ -81,7 +83,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     GenerarArchivoCIComponent,
     RegistroAhorrosComponent,
     RegistroProveedorComponent,
-    ContratoComponent],
+    ContratoComponent,
+    ParametrosDiferidosComponent,
+    FacturasDiferidasComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

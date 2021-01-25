@@ -48,7 +48,7 @@
 								<td align="center">{{ factura.dpNumeroFactura }}</td>
 								<td align="center">{{ factura.dpFechaFactura | date:'dd/MM/yyyy' }}</td>
 								<td>{{ factura.dpComentario }}</td>
-								<td>{{ factura.dpIdCabecera.cpIdCuentaContable.cpCodigoCatalogo }}</td>
+								<td>{{ factura.dpIdCabeceraDetalle.cdIdCabeceraPresupuesto.cpIdCuentaContable.cpCodigoCatalogo }}</td>
 								<td align="right">{{ factura.dpValorPresupuesto | currency }}</td>
 								<td align="center"><a (click)="verFactura(factura.dpIdDetalle)">Ver Factura</a></td>
 								<td align="center">{{ factura.usIdUsuario.usDescripcionUsuario }}</td>
